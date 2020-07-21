@@ -10,4 +10,11 @@ class AuthenticationController extends Controller
     {
         return view();
     }
+
+
+    function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }

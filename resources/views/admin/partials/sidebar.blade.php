@@ -2,7 +2,7 @@
     <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('home')}}">
+                <a class="nav-link" href="{{route('dashboard')}}">
                     <i class="icon-speedometer"></i> {{__('Tableau de bord')}}
                 </a>
             </li>
@@ -10,60 +10,53 @@
                 {{__('Paroissiens')}}
             </li>
             <li class="nav-item">
-                <a href="colors.html" class="nav-link"><i class="icon-user"></i> {{__('Paroissiens')}}</a>
+                <a href="{{route('parishioners.index')}}" class="nav-link"><i class="icon-people"></i> {{__('Paroissiens')}}</a>
             </li>
             <li class="nav-item">
-                <a href="colors.html" class="nav-link"><i class="icon-layers"></i> {{__('Demandes de messe')}}</a>
-            </li>
-            <li class="nav-item">
-                <a href="colors.html" class="nav-link"><i class="icon-user"></i> {{__('Utilisateurs')}}</a>
+                <a href="{{route('parishionersRequest.index')}}" class="nav-link"><i class="icon-layers"></i> {{__('Demandes de messe')}}</a>
             </li>
             <li class="nav-title">
                 {{__('Paroisses')}}
             </li>
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link" href="buttons-buttons.html"><i class="icon-cursor"></i> {{__('Messes')}}</a>
+            <li class="nav-item">
+                <a href="{{route('users.index')}}" class="nav-link"><i class="icon-user"></i> {{__('Utilisateurs')}}</a>
             </li>
             <li class="nav-item nav-dropdown">
-                <a class="nav-link" href="buttons-buttons.html"><i class="icon-cursor"></i> {{__('Causes')}}</a>
+                <a class="nav-link" href="{{route('masses.index')}}"><i class="icon-bell"></i> {{__('Messes')}}</a>
             </li>
-
-
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link" href="{{route('causes.index')}}"><i class="icon-badge"></i> {{__('Causes')}}</a>
+            </li>
             <li class="nav-title">
                 {{__('Transactions')}}
             </li>
             <li class="nav-item">
-                <a href="colors.html" class="nav-link"><i class="icon-directions"></i> {{__('Transactions')}}</a>
+                <a href="{{route('transactions.index')}}" class="nav-link"><i class="icon-directions"></i> {{__('Transactions')}}</a>
             </li>
-
-
-
-
             <li class="nav-title">
                 {{__('Paramètres')}}
             </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link" href="{{route('admins.index')}}"><i class="icon-shield"></i> {{__('Administrateurs')}}</a>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link" href="{{route('dioceses.index')}}"><i class="icon-anchor"></i> {{__('Diocèses')}}</a>
+            </li>
 
             <li class="nav-item nav-dropdown">
-                <a class="nav-link" href="#"><i class="icon-shield"></i> {{__('Administrateurs')}}</a>
-            </li>
-           <li class="nav-item nav-dropdown">
-                <a class="nav-link" href="#"><i class="icon-bell"></i> {{__('Diocèses')}}</a>
-            </li>
-
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link" href="#"><i class="icon-home"></i> {{__('Paroisses')}}</a>
+                <a class="nav-link" href="{{route('parishes.index')}}"><i class="icon-home"></i> {{__('Paroisses')}}</a>
             </li>
             <li class="nav-item nav-dropdown">
-                <a class="nav-link" href="#"><i class="icon-home"></i> {{__('Types de demande')}}</a>
+                <a class="nav-link" href="{{route('requestTypes.index')}}"><i class="icon-list"></i> {{__('Types de demande')}}</a>
             </li>
             <li class="nav-item">
-                <a href="colors.html" class="nav-link"><i class="icon-globe"></i> {{__('Pays')}}</a>
+                <a href="{{route('countries.index')}}" class="nav-link"><i class="icon-globe"></i> {{__('Pays')}}</a>
             </li>
             <li class="nav-item">
-                <a href="colors.html" class="nav-link"><i class="icon-map"></i> {{__('Villes')}}</a>
+                <a href="{{route('cities.index')}}" class="nav-link"><i class="icon-location-pin"></i> {{__('Villes')}}</a>
             </li>
 
         </ul>
     </nav>
-    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    {{--<button class="sidebar-minimizer brand-minimizer" type="button"></button>--}}
 </div>
