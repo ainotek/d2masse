@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
-    //
+    public function adminLogin()
+    {
+        return view();
+    }
 }

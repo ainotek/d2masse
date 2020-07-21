@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],
@@ -68,13 +68,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'parishioners' => [
+             'driver' => 'eloquent',
+             'model' => App\Models\Parishioner::class,
+         ],
     ],
 
     /*
@@ -95,6 +94,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'parishioners' => [
+            'provider' => 'parishioners',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

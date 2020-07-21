@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('admin.template');
+})->name('home');
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+    Route::get('login', 'AuthenticationController@adminLogin');
+
+    Route::get('logout', function (){
+        Auth::logout();
+        return redirect('/');
+    });
 });
