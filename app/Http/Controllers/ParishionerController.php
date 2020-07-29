@@ -35,8 +35,8 @@ class ParishionerController extends Controller
         $data = $request->only("first_name", "last_name", "email", "phone",
             "birthday", "gender", "parish_id", "password", "is_baptized", "is_confirmed", "is_catechumen");
         $request->has('is_baptized') ? $data["is_baptized"] = true : $data["is_baptized"] = false;
-        $request->has('is_confirmed') ? $data["is_baptized"] = true : $data["is_confirmed"] = false;
-        $request->has('is_catechumen') ? $data["is_baptized"] = true : $data["is_catechumen"] = false;
+        $request->has('is_confirmed') ? $data["is_confirmed"] = true : $data["is_confirmed"] = false;
+        $request->has('is_catechumen') ? $data["is_catechumen"] = true : $data["is_catechumen"] = false;
         $password = Hash::make($data["password"]);
 
         //dd($data);
