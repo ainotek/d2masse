@@ -14,31 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PageController@home')->name('home');
-
-Route::get('/void', function () {
-    return view('admin.template');
-})->name('#');
-
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+})->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function (){return redirect()->route('dashboard');});
+    Route::get('/', function () {
+        return redirect()->route('dashboard');
+    });
     Route::get('/tableau_de_bord', 'DashboardController@index')->name('dashboard');
-    Route::get('connexion', 'AuthenticationController@adminLogin');
-    Route::get('paroissiens', 'ParishionerController@index')->name('parishioners.index');
-    Route::get('utilisateurs', 'UserController@index')->name('users.index');
-    Route::get('messes', 'MasseController@index')->name('masses.index');
-    Route::get('causes', 'MasseController@index')->name('causes.index');
-    Route::get('administrateurs', 'MasseController@index')->name('admins.index');
-    Route::get('dioceses', 'MasseController@index')->name('dioceses.index');
-    Route::get('paroisses', 'MasseController@index')->name('parishes.index');
-    Route::get('transactions', 'MasseController@index')->name('transactions.index');
-    Route::get('types_de_requettes', 'MasseController@index')->name('requestTypes.index');
-    Route::get('pays', 'MasseController@index')->name('countries.index');
-    Route::get('villes', 'MasseController@index')->name('cities.index');
-    Route::get('demandes_de_messe', 'DemandeDeMesseController@index')->name('parishionersRequest.index');
+    Route::get('connexion', 'AuthenticationController@adminLogin')->name('admins.login');
+    Route::post('connexion', 'AuthenticationController@adminAuthentication')->name('admins.authentication');
+    Route::resource('parishioners', 'ParishionerController');
+    Route::resource('users', 'UserController');
+    Route::resource('masses', 'MasseController');
+    Route::resource('causes', 'CauseController');
+    Route::resource('admins', 'AdminController');
+    Route::resource('dioceses', 'DioceseController');
+    Route::resource('parishes', 'ParishController');
+    Route::resource('transactions', 'TransactionController');
+    Route::resource('requestTypes', 'RequestTypeController');
+    Route::resource('countries', 'CountryController');
+    Route::resource('cities', 'CityController');
+    Route::resource('parishionersRequest', 'ParishionerRequestController');
 
-
-
-    Route::get('deconnexion','AuthenticationController@logout')->name('logout');
+    Route::get('deconnexion', 'AuthenticationController@logout')->name('logout');
 });

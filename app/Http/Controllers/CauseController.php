@@ -8,6 +8,6 @@ class CauseController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.massesIndex');
+        return view('admin.pages.causesIndex');
     }
 }

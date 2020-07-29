@@ -8,7 +8,7 @@
     <meta name="author" content="Ben Ouattara">
     <meta name="keyword" content=",">
     <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
-    <title>CoreUI Pro - Bootstrap 4 Admin Template</title>
+    <title>{{__('Demande de messe - Backoffice')}}</title>
 
     <!-- Icons -->
     <link href="{{asset('vendors/css/flag-icon.min.css')}}" rel="stylesheet">
@@ -22,7 +22,11 @@
     <link href="{{asset('vendors/css/daterangepicker.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/css/gauge.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/css/toastr.min.css')}}" rel="stylesheet">
-
+    <style>
+        th {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -62,6 +66,11 @@
 
 <!-- Custom scripts required by this view -->
 <script src="{{asset('js/views/main.js')}}"></script>
+
+
+<script src="{{asset('vendors/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('vendors/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('js/views/datatables.js')}}"></script>
 
 </body>
 </html>

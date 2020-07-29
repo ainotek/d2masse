@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    //
+    protected $dates = ['name_field'];
+
 }

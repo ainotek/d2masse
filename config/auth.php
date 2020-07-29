@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'web-admins',
+        'passwords' => 'admins',
     ],
 
     /*
@@ -40,11 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'web-admins' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
 
         'api' => [
             'driver' => 'passport',
-            'provider' => 'users',
-            'hash' => false,
+            'provider' => 'parishioners',
         ],
     ],
 
@@ -66,14 +69,18 @@ return [
     */
 
     'providers' => [
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
         'parishioners' => [
-             'driver' => 'eloquent',
-             'model' => App\Models\Parishioner::class,
-         ],
+            'driver' => 'eloquent',
+            'model' => App\Models\Parishioner::class,
+        ],
     ],
 
     /*
@@ -92,6 +99,12 @@ return [
     */
 
     'passwords' => [
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
