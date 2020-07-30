@@ -4,8 +4,7 @@
         <div class="animated fadeIn">
             <div class="card">
                 <div class="card-header">
-                    <a href="#" class="btn btn-primary rounded" data-toggle="modal"
-                       data-target="#createParishionerModal">
+                    <a href="{{route('parishioners.create')}}" class="btn btn-primary rounded">
                         <i class="fa fa-plus-circle"></i>
                         <strong>{{__('Paroissiens')}}</strong>
                     </a>

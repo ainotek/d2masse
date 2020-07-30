@@ -50,7 +50,9 @@
             </li>
             <li class="nav-item nav-dropdown">
 
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-bell"></i> {{__('Église')}}</a>
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="icon-bell"></i> {{__('Églises')}}
+                </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item nav-dropdown">
                         <a class="nav-link" href="{{route('dioceses.index')}}">
@@ -60,13 +62,16 @@
 
                     <li class="nav-item nav-dropdown">
                         <a class="nav-link" href="{{route('parishes.index')}}">
-                            <i class="icon-home"></i> {{__('Paroisses')}}</a>
+                            <i class="icon-home"></i> {{__('Paroisses')}}
+                        </a>
                     </li>
                 </ul>
             </li>
 
             <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-map"></i> Lieu</a>
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="icon-map"></i> {{__('Lieux')}}
+                </a>
                 <ul class="nav-dropdown-items">
 
                     <li class="nav-item">
