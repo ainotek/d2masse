@@ -1,11 +1,13 @@
 @extends('admin.template')
 @section('content')
     <div class="container-fluid">
+        @if(Session::has('message'))
+            <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+        @endif
         <div class="animated fadeIn">
             <div class="card">
                 <div class="card-header">
-                    <a href="#" class="btn btn-primary rounded" data-toggle="modal"
-                       data-target="#createParishionerModal">
+                    <a href="{{ route('parishioners.create') }}" class="btn btn-primary rounded">
                         <i class="fa fa-plus-circle"></i>
                         <strong>{{__('Paroissiens')}}</strong>
                     </a>
@@ -66,7 +68,7 @@
                                 <td nowrap>{{$parishioner->created_at->format('d/m/Y H:i:s')}}</td>
                                 <td nowrap>{{$parishioner->updated_at->format('d/m/Y H:i:s')}}</td>
                                 <td nowrap>
-                                    <a class="btn btn-secondary rounded text-light" href="#">
+                                    <a class="btn btn-secondary rounded text-light" href="{{ route('parishioners.edit', ['parishioner' => $parishioner->id]) }}">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a class="btn btn-danger rounded" href="#">
@@ -82,7 +84,7 @@
         </div>
     </div>
     <!-- /.conainer-fluid -->
-    <div id="createParishionerModal" class="modal modal-lg m-auto m-0 p-0">
+    {{-- <div id="createParishionerModal" class="modal modal-lg m-auto m-0 p-0">
         <div class="modal-dialog" role="document">
             <div class="modal-content rounded m-0 p-0">
                 <form action="{{route("parishioners.store")}}" method="post">
@@ -276,12 +278,10 @@
                         <button type="submit"
                                 class="btn btn-info text-light font-weight-bold rounded">{{__('Enregistrer')}}
                         </button>
-                        <button type="button" class="btn btn-danger font-weight-bold text-light rounded"
-                                data-dismiss="modal">{{__('Annuler')}}
-                        </button>
+                        <input type="reset" value="{{__('Annuler')}}" class="btn btn-danger font-weight-bold text-light rounded" />
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 @stop
