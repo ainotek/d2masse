@@ -20,6 +20,8 @@ Route::get('/', function () {
     return response()->json($password);
 });
 
+Route::get('parishes/{id}/masses', 'ParishionerRequestController@getMasses')->name('getMassesByParish');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

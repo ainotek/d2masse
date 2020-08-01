@@ -36,4 +36,10 @@ class ParishionerRequestController extends Controller
 
         return response()->json($parishioners, $masses);
     }
+
+    public function getMasses($id)
+    {
+        $masses = Masse::where('parish_id', $id)->orderBy('start_day', 'asc')->get()->toArray();
+        return response()->json($masses, 200);
+    }
 }
