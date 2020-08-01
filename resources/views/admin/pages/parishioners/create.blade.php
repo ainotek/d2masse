@@ -1,7 +1,7 @@
 @extends('admin.template')
 @section('content')
     <div class="container-fluid">
-        <div class="animated fadeIn">
+        <div class="animated fadeIn col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">
                     <h5 class="modal-title">{{__('Création d\'un nouveau paroissien')}}</h5>
@@ -223,7 +223,7 @@
                                                 <label for="birthday">{{__('Date de naissance')}}</label>
                                                 <div class="input-group date">
                                                     <input type="date" id="birthday" name="birthday"
-                                                            value="{{ old('birthday') }}"
+                                                            value="{{ old('birthday') }}" class="form-control"
                                                            value="1990-01-01" min="1920-01-01" max="2020-01-01">
                                                         </div>
                                                         @error('birthday')

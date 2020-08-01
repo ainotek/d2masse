@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parish;
 use Illuminate\Http\Request;
 
 class ParishController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.parishesIndex');
+        $parishes = Parish::all();
+
+        return view('admin.pages.parishes.index', compact('parishes'));
     }
 }

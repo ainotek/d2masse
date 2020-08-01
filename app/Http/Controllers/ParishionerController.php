@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateParishionerRequest;
 use App\Models\City;
+use App\Models\Masse;
 use App\Models\Parish;
 use App\Models\Parishioner;
 use App\services\ParishionerService;

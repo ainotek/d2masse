@@ -22,6 +22,7 @@
     <link href="{{asset('vendors/css/daterangepicker.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/css/gauge.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendors/css/toastr.min.css')}}" rel="stylesheet">
+    @yield('css')
     <style>
         th {
             white-space: nowrap;
@@ -71,6 +72,6 @@
 <script src="{{asset('vendors/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('vendors/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset('js/views/datatables.js')}}"></script>
-
+@yield('scripts')
 </body>
 </html>

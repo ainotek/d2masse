@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Masse;
+use App\Models\Parish;
+use App\Models\Parishioner;
 use App\Models\Parishioner_request;
+use App\Models\Request_type;
 use Illuminate\Http\Request;
 
 class ParishionerRequestController extends Controller
@@ -10,7 +14,26 @@ class ParishionerRequestController extends Controller
     public function index()
     {
         $requests = Parishioner_request::orderByDesc('created_at')->get();
+        $parishioners = Parishioner::all();
 
-        return view('admin.pages.requests.index', compact('requests'));
+        return view('admin.pages.requests.index', compact('requests', 'parishioners'));
+    }
+
+    public function create()
+    {
+        $parishioners = Parishioner::all();
+        $requestsType = Request_type::all();
+        $parishes = Parish::all();
+        $masses = Masse::all();
+
+        return view('admin.pages.requests.create', compact('parishioners', 'requestsType', 'parishes', 'masses'));
+    }
+
+    public function getAllByParish(Request $request)
+    {
+        $parishioners = Parishioner::where('parish_id', $request->value)->orderBy('first_name', 'asc')->get();
+        $masses = Masse::where('parish_id', $request->value)->orderBy('start_day', 'asc')->get();
+
+        return response()->json($parishioners, $masses);
     }
 }

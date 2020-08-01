@@ -1,7 +1,7 @@
 @extends('admin.template')
 @section('content')
     <div class="container-fluid">
-        <div class="animated fadeIn">
+        <div class="animated fadeIn col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">
                     <h5 class="modal-title">{{__('Création d\'un nouveau paroissien')}}</h5>

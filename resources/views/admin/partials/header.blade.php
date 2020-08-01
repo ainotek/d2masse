@@ -12,7 +12,7 @@
             <a class="nav-link" href="{{route('dashboard')}}">{{__('Tableau de bord')}}</a>
         </li>
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{route('parishionersRequest.index')}}">{{__('Demandes de messe')}}</a>
+            <a class="nav-link" href="{{route('parishioners-request.index')}}">{{__('Demandes de messe')}}</a>
         </li>
         <li class="nav-item px-3">
             <a class="nav-link" href="{{route('parishioners.index')}}">{{__('Paroissiens')}}</a>

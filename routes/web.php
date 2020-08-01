@@ -33,10 +33,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('dioceses', 'DioceseController');
     Route::resource('parishes', 'ParishController');
     Route::resource('transactions', 'TransactionController');
-    Route::resource('requestTypes', 'RequestTypeController');
+    Route::resource('request-types', 'RequestTypeController');
+    Route::delete('request-types/delete/{request_type}', 'RequestTypeController@destroy')->name('request-types.delete');
     Route::resource('countries', 'CountryController');
     Route::resource('cities', 'CityController');
-    Route::resource('parishionersRequest', 'ParishionerRequestController');
+    Route::resource('parishioners-request', 'ParishionerRequestController');
 
     Route::get('deconnexion', 'AuthenticationController@logout')->name('logout');
+
+    Route::get('informationsParish', 'ParishionerRequestController@getAllByParish')->name('parishioners-all-by-parish_id');
 });
