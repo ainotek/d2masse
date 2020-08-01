@@ -41,5 +41,5 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('deconnexion', 'AuthenticationController@logout')->name('logout');
 
-    Route::get('informationsParish', 'ParishionerRequestController@getAllByParish')->name('parishioners-all-by-parish_id');
+    Route::get('informationsParish', 'ParishionerRequestController@getAllByParish')->name('get-all-by-parish');
 });
