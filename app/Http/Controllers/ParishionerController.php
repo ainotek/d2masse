@@ -38,7 +38,7 @@ class ParishionerController extends Controller
         if ($request->wantsJson() && $request->is('api/*')) {
             return response()->json($response, 201);
         }
-        $request->session()->flash('message', "Paroission ajouté avec succès");
+        $request->session()->flash('message', "Paroissien ajouté avec succès");
         $request->session()->flash('alert-class', 'alert-success');
 
         return redirect()->route("parishioners.index");

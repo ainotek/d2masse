@@ -20,23 +20,26 @@
                     <table class="table table-striped table-bordered datatable">
                         <thead>
                         <tr>
-                            <th>Demandeur</th>
-                            <th>Date</th>
-                            <th>Heure</th>
-                            <th>Type de demande</th>
+                            <th>{{__('Paroisse')}}</th>
+                            <th>{{__('Receveur')}}</th>
+                            <th>{{__('Demandeur')}}</th>
+                            <th>{{__('Messe')}}</th>
+                            <th>{{__('Type de demande')}}</th>
+                            <th>{{__('Message')}}</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($masses as $mass)
+                            @dd($mass->massRequests)
                             <tr>
-                                <td>Anton Phunihel</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
-                                <td>
-                                    Ok
-                                    {{-- {{ $requests->parishioner->first_name . ' ' . $requests->parishioner->last_name }} --}}
-                                </td>
-                                <td>
+                                <td nowrap>{{$mass->parish}}</td>
+                                <td nowrap>{{$mass->receiver}}</td>
+                                <td nowrap>{{$mass->massRequests . ' '. $mass->parishioner->last_name ?? ' - '}}</td>
+                                <td>{{$request->masse->name}}</td>
+                                <td>{{$request->requestType->name}}</td>
+                                <td>{{$request->message}}                                                                    </td>
+                                <td nowrap>
                                     <a class="btn btn-success" href="#">
                                         <i class="fa fa-search-plus "></i>
                                     </a>
@@ -48,6 +51,7 @@
                                     </a>
                                 </td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

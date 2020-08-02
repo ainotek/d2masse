@@ -10,7 +10,15 @@ class Parish extends Model
         return $this->hasMany(Parishioner::class);
     }
 
+    public function masses(){
+        return $this->hasMany(Mass::class);
+    }
+
     public function city(){
         return $this->belongsTo(City::class);
+    }
+
+    public function massesRequests(){
+        return $this->hasManyThrough(Mass_request::class, Mass::class);
     }
 }
