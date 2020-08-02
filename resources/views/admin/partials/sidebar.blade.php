@@ -5,14 +5,7 @@
                 <a class="nav-link" href="{{route('dashboard')}}">
                     <i class="icon-speedometer"></i> {{__('Tableau de bord')}}
                 </a>
-            </li>
-            <li class="nav-title">
-                {{__('Paroisses')}}
-            </li>
-            <li class="nav-item">
-                <a href="{{route('parishes.index')}}" class="nav-link">
-                    <i class="icon-people"></i> {{__('Paroisses')}}</a>
-            </li>
+            </li>git
             <li class="nav-title">
                 {{__('Paroissiens')}}
             </li>
