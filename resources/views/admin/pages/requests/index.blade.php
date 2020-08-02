@@ -26,31 +26,32 @@
                             <th>{{__('Messe')}}</th>
                             <th>{{__('Type de demande')}}</th>
                             <th>{{__('Message')}}</th>
-                            <th>Actions</th>
+                            <th>{{__('Actions')}}</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($masses as $mass)
-                            @dd($mass->massRequests)
-                            <tr>
-                                <td nowrap>{{$mass->parish}}</td>
-                                <td nowrap>{{$mass->receiver}}</td>
-                                <td nowrap>{{$mass->massRequests . ' '. $mass->parishioner->last_name ?? ' - '}}</td>
-                                <td>{{$request->masse->name}}</td>
-                                <td>{{$request->requestType->name}}</td>
-                                <td>{{$request->message}}                                                                    </td>
-                                <td nowrap>
-                                    <a class="btn btn-success" href="#">
-                                        <i class="fa fa-search-plus "></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="fa fa-edit "></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="fa fa-trash-o "></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach($mass->massRequests as $massRequest)
+                                <tr>
+                                    <td nowrap>{{$mass->parish->name}}</td>
+                                    <td nowrap>{{$massRequest->receiver}}</td>
+                                    <td nowrap>{{$massRequest->parishioner->first_name . ' '. $massRequest->parishioner->last_name ?? ' - '}}</td>
+                                    <td nowrap>{{$mass->name}}</td>
+                                    <td nowrap>{{$massRequest->requestType->name}}</td>
+                                    <td>{{$massRequest->message}}                                                                    </td>
+                                    <td nowrap>
+                                        <a class="btn btn-success" href="#">
+                                            <i class="fa fa-search-plus "></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="fa fa-edit "></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="fa fa-trash-o "></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endforeach
                         </tbody>
                     </table>
