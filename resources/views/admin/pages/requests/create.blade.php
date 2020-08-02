@@ -1,11 +1,5 @@
 @extends('admin.template')
 
-@section('css')
-    <!-- Styles required by this views -->
-    <link href="{{ asset('vendors/css/daterangepicker.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendors/css/select2.min.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
     <div class="container-fluid" id="app">
         <div class="animated fadeIn">
@@ -88,15 +82,13 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/customVue.js') }}"></script>
+
     <!-- Plugins and scripts required by this views -->
     <script src="{{ asset('vendors/js/jquery.maskedinput.min.js') }}"></script>
     <script src="{{ asset('vendors/js/moment.min.js') }}"></script>
-    <script src="{{ asset('vendors/js/select2.min.js') }}"></script>
     <script src="{{ asset('vendors/js/daterangepicker.min.js') }}"></script>
 
     <!-- Custom scripts required by this view -->
     <script src="{{ asset('js/views/advanced-forms.js') }}"></script>
-    <script src="{{ asset('vendors/js/vue.js') }}"></script>
-    <script src="{{ asset('vendors/js/axios.js') }}"></script>
-    <script src="{{ asset('js/customVue.js') }}"></script>
 @endsection
