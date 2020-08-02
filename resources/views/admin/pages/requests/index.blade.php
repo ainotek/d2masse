@@ -21,33 +21,36 @@
                         <thead>
                         <tr>
                             <th>Demandeur</th>
-                            <th>Date</th>
-                            <th>Heure</th>
+                            <th>Paroisse</th>
+                            <th>Messe</th>
                             <th>Type de demande</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Anton Phunihel</td>
-                                <td>2012/01/01</td>
-                                <td>Member</td>
-                                <td>
-                                    Ok
-                                    {{-- {{ $requests->parishioner->first_name . ' ' . $requests->parishioner->last_name }} --}}
-                                </td>
-                                <td>
-                                    <a class="btn btn-success" href="#">
-                                        <i class="fa fa-search-plus "></i>
-                                    </a>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="fa fa-edit "></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="fa fa-trash-o "></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach($requests as $request)
+                                <tr>
+                                    <td>{{ $request->receiver }}</td>
+                                    <td>
+                                        TODO
+                                    </td>
+                                    <td>{{ $request->masse->name }}</td>
+                                    <td>
+                                        {{ $request->requestType->name }}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success" href="#">
+                                            <i class="fa fa-search-plus "></i>
+                                        </a>
+                                        <a class="btn btn-info" href="#">
+                                            <i class="fa fa-edit "></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="fa fa-trash-o "></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
