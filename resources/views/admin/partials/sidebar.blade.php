@@ -5,7 +5,7 @@
                 <a class="nav-link" href="{{route('dashboard')}}">
                     <i class="icon-speedometer"></i> {{__('Tableau de bord')}}
                 </a>
-            </li>git
+            </li>
             <li class="nav-title">
                 {{__('Paroissiens')}}
             </li>
