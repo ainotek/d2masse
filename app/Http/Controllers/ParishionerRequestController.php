@@ -29,6 +29,25 @@ class ParishionerRequestController extends Controller
         return view('admin.pages.requests.create', compact('parishioners', 'requestsType', 'parishes', 'masses'));
     }
 
+    public function store(Request $request)
+    {
+        $data = $request->only( "parishioner_id", "receiver", "request_type_id", "masse_id", "message");
+        try {
+            $parishionerRequest = Parishioner_request::create($data);
+            //dd($parishionerRequest);
+            if ($request->wantsJson() && $request->is('api/*')) {
+                return response()->json($parishionerRequest, 201);
+            }
+            $request->session()->flash('message', "Demande ajouté avec succès");
+            $request->session()->flash('alert-class', 'alert-success');
+
+            return redirect()->route("parishioners-request.index");
+        } catch (\Exception $e) {
+            dd($e);
+
+        }
+    }
+
     public function getAllByParish(Request $request)
     {
         $parishioners = Parishioner::where('parish_id', $request->value)->orderBy('first_name', 'asc')->get();

@@ -38,47 +38,8 @@ class ParishionerController extends Controller
         if ($request->wantsJson() && $request->is('api/*')) {
             return response()->json($response, 201);
         }
-        $request->validate([
-            'email' => 'required|email|min:6|max:60|unique:parishioners',
-            'first_name' => 'required|string|min:2|max:60',
-            'last_name' => 'required|string|min:2|max:120',
-            'phone' => 'required|string|min:8|max:14',
-            'birthday' => 'required|date',
-            'gender' => 'required|string|max:1',
-            'parish_id' => 'required|exists:parishes,id',
-            'password' => 'required|min:8|confirmed'
-        ]);
-        //dd($request->all());
-        $data = $request->only(
-                    "first_name", "last_name", "email", "phone",
-                    "birthday", "gender", "parish_id", "password",
-                    "is_baptized", "is_confirmed", "is_catechumen"
-                );
-
-        $request->has('is_baptized') ? $data["is_baptized"] = true : $data["is_baptized"] = false;
-        $request->has('is_confirmed') ? $data["is_confirmed"] = true : $data["is_confirmed"] = false;
-        $request->has('is_catechumen') ? $data["is_catechumen"] = true : $data["is_catechumen"] = false;
-        $password = Hash::make($data["password"]);
-
-        //dd($data);
-        $parishioner = Parishioner::create([
-            "first_name" => strtolower($data["first_name"]),
-            "last_name" => strtolower($data["last_name"]),
-            "email" => strtolower($data["email"]),
-            "password" => $password,
-            "phone" => $data["phone"],
-            "is_baptized" => $data["is_baptized"],
-            "is_confirmed" => $data["is_confirmed"],
-            "is_catechumen" => $data["is_catechumen"],
-            "birthday" => $data["birthday"],
-            "gender" => $data["gender"],
-            "parish_id" => 1,
-            "city_id" => 1,
-        ]);
-
         $request->session()->flash('message', "Paroission ajouté avec succès");
         $request->session()->flash('alert-class', 'alert-success');
-
 
         return redirect()->route("parishioners.index");
     }
@@ -99,13 +60,10 @@ class ParishionerController extends Controller
 
     public function update(UpdateParishionerRequest $request, $id)
     {
-        $data = $request->validated();
+        $data = $request->only('email', 'first_name', 'last_name', 'phone', 'birthday', 'gender', 'parish_id');
         $request->has('is_baptized') ? $data["is_baptized"] = true : $data["is_baptized"] = false;
         $request->has('is_confirmed') ? $data["is_confirmed"] = true : $data["is_confirmed"] = false;
         $request->has('is_catechumen') ? $data["is_catechumen"] = true : $data["is_catechumen"] = false;
-        if ($data["password"]) {
-            $data['password'] = Hash::make($data['password']);
-        }
 
         try {
             $parishioner = Parishioner::findOrFail($id);

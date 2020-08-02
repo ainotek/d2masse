@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parishioner_request extends Model
 {
+    protected $fillable = ["parishioner_id", "receiver", "request_type_id", "masse_id", "message"];
     protected $dates = ['name_field'];
 
     public function masse()

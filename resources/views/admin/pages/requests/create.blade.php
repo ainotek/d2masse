@@ -9,13 +9,13 @@
                       <div class="card-header">
                         Formulaire de création d'une demande de Messe
                       </div>
-                      <form id="requestForm" action="{{ route('parishioners-request.store') }}" method="post">
+                      <form id="requestForm" action="{{ route('parishioners-request.store') }}" method="post"  data-masses-url="{{route('getMassesByParish', ["id"=> "#id"])}}">
                         @csrf
                         @method('post')
                         <div class="modal-body">
                             <fieldset class="form-group">
                                 <label for="select2-2">{{__('Paroisse')}}</label>
-                                <select @change="updateParishioner" name="parish_id" id="select2-2" class="select2-single form-control">
+                                <select @change="updateParishioner" name="parish_id" id="select2-2" class="select2-single form-control" >
                                     <option value="">---Choisir la Paroisse---</option>
                                     @foreach($parishes as $parish)
                                         <option value="{{ $parish->id }}">{{ $parish->name }}</option>
@@ -54,11 +54,8 @@
                                 <label for="hour">{{__('Messe')}}
                                 </label>
                                 <div class="input-group">
-                                    <select name="masse_id" id="masse_id" class="form-control">
-                                        <option value="">---Choisir la Messe---</option>
-                                        @foreach($masses as $masse)
-                                            <option value="{{ $masse->id }}">{{ $masse->name }}</option>
-                                        @endforeach
+                                    <select name="masse_id" id="masse_id" class="form-control" autocomplete="off">
+                                        <option value="" selected>---Choisir la Messe---</option>
                                     </select>
                                 </div>
                             </div>
