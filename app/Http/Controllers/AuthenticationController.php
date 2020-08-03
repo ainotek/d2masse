@@ -24,16 +24,17 @@ class AuthenticationController extends Controller
         ]);
 
         $credentials = $request->only("email", "password");
-        dump($credentials, Hash::make('password'));
-        //try{
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
-            dump("logged in");
-            return redirect()->route('dashboard');
+        //dump($credentials, Hash::make('password'));
+        try {
+            if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
+                //dump("logged in");
+                //dd(Auth::user());
+                return redirect()->route('dashboard');
+            }
+        } catch (\Exception $e) {
+            dump($e->getMessage());
         }
-        //}catch (\Exception $e){
-        //dump($e->getMessage());
-        //}
-        dump("connexion failed");
+        dd("connexion failed");
         return redirect()->route('admins.login');
     }
 
@@ -41,6 +42,6 @@ class AuthenticationController extends Controller
     function logout()
     {
         Auth::logout();
-        return redirect()->route('admins.login');
+        return redirect()->route('login');
     }
 }

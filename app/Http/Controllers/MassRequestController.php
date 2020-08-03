@@ -10,7 +10,7 @@ use App\Models\Request_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ParishionerRequestController extends Controller
+class MassRequestController extends Controller
 {
     public function index()
     {
@@ -29,14 +29,15 @@ class ParishionerRequestController extends Controller
         $parishioners = Parishioner::all();
         $requestsType = Request_type::all();
         $parishes = Parish::all();
-        $masses = Masse::all();
+        $masses = Mass::all();
 
         return view('admin.pages.requests.create', compact('parishioners', 'requestsType', 'parishes', 'masses'));
     }
 
     public function store(Request $request)
     {
-        $data = $request->only( "parishioner_id", "receiver", "request_type_id", "masse_id", "message");
+        $data = $request->only( "parishioner_id", "receiver", "request_type_id", "mass_id", "message");
+        dump($data);
         try {
             $parishionerRequest = Mass_request::create($data);
             //dd($parishionerRequest);

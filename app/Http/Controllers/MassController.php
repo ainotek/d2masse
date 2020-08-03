@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Masse;
+use App\Models\Mass;
 use Illuminate\Http\Request;
 
-class MasseController extends Controller
+class MassController extends Controller
 {
     public function index()
     {
-        $masses = Masse::all();
+        $masses = Mass::all();
 
         return view('admin.pages.masses.index', compact('masses'));
     }

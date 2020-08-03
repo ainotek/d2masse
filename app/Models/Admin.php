@@ -9,7 +9,7 @@ use Laravel\Passport\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use Notifiable;
 
     public $timestamps = true;
     /**

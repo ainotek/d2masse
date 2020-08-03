@@ -29,12 +29,12 @@
                         </thead>
                         <tbody>
                             @foreach($parishes as $parish)
-                                <tr>
+                                <tr class="text-center">
                                     <td width="200px">{{ $parish->name }}</td>
-                                    <td>{{ $parish->city->name }}</td>
-                                    <td>{{ $parish->diocèse }}</td>
+                                    <td nowrap="">{{ $parish->city->name }}</td>
+                                    <td nowrap>{{ $parish->diocese->name }}</td>
                                     <td>{{ $parish->registration }}</td>
-                                    <td>nombre</td>
+                                    <td>{{$parish->parishioners->count()}}</td>
                                     <td>{{ $parish->phone }}</td>
                                     <td>{{ $parish->email }}</td>
                                     <td width="200px">

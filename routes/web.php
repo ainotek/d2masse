@@ -17,17 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect()->route('dashboard');
 })->name('home');
+Route::group(['middleware' => ['guest:web']], function () {
 
-Route::group(['prefix' => 'admin'], function () {
+    Route::get('connexion', 'AuthenticationController@adminLogin')->name('login');
+    Route::post('connexion', 'AuthenticationController@adminAuthentication')->name('admins.authentication');
+});
+
+Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin',], function () {
     Route::get('/', function () {
         return redirect()->route('dashboard');
     });
     Route::get('/tableau_de_bord', 'DashboardController@index')->name('dashboard');
-    Route::get('connexion', 'AuthenticationController@adminLogin')->name('admins.login');
-    Route::post('connexion', 'AuthenticationController@adminAuthentication')->name('admins.authentication');
     Route::resource('parishioners', 'ParishionerController');
-    Route::resource('users', 'UserController');
-    Route::resource('masses', 'MasseController');
+    Route::resource('users', 'SupervisorController');
+    Route::resource('masses', 'MassController');
     Route::resource('causes', 'CauseController');
     Route::resource('admins', 'AdminController');
     Route::resource('dioceses', 'DioceseController');
@@ -37,7 +40,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('request-types/delete/{request_type}', 'RequestTypeController@destroy')->name('request-types.delete');
     Route::resource('countries', 'CountryController');
     Route::resource('cities', 'CityController');
-    Route::resource('parishioners-request', 'ParishionerRequestController');
-
-    Route::get('deconnexion', 'AuthenticationController@logout')->name('logout');
+    Route::resource('parishioners-request', 'MassRequestController');
 });
+Route::get('deconnexion', 'AuthenticationController@logout')->name('logout');

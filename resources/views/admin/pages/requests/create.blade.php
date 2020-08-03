@@ -7,7 +7,7 @@
                 <div class="col-md-8 offset-md-2">
                     <div class="card">
                       <div class="card-header">
-                        Formulaire de création d'une demande de Messe
+                          <h5 class="modal-title">{{__('Création d\'une demande de Messe')}}</h5>
                       </div>
                       <form id="requestForm" action="{{ route('parishioners-request.store') }}" method="post"  data-masses-url="{{route('getMassesByParish', ["id"=> "#id"])}}">
                         @csrf
@@ -15,7 +15,7 @@
                         <div class="modal-body">
                             <fieldset class="form-group">
                                 <label for="select2-2">{{__('Paroisse')}}</label>
-                                <select @change="updateParishioner" name="parish_id" id="select2-2" class="select2-single form-control" >
+                                <select name="parish_id" id="select2-2" class="select2-single form-control" >
                                     <option value="">---Choisir la Paroisse---</option>
                                     @foreach($parishes as $parish)
                                         <option value="{{ $parish->id }}">{{ $parish->name }}</option>
@@ -51,10 +51,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="hour">{{__('Messe')}}
+                                <label for="mass_id">{{__('Messe')}}
                                 </label>
                                 <div class="input-group">
-                                    <select name="masse_id" id="masse_id" class="form-control" autocomplete="off">
+                                    <select name="mass_id" id="mass_id" class="form-control" autocomplete="off">
                                         <option value="" selected>---Choisir la Messe---</option>
                                     </select>
                                 </div>
@@ -62,12 +62,16 @@
                             <div class="form-group">
                                 <label for="message">{{__('Message')}}</label>
                                 <div class="input-group">
-                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="{{ __('Ecrire la demande') }}"></textarea>
+                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="{{ __('Ecrire la demande (texte limité à 120 charactere)') }}"></textarea>
                                 </div>
                             </div>
-                            <div class="text-right">
-                                <button type="reset" class="btn btn-dark">Annuler</button>
-                                <button type="submit" class="btn btn-success">Créer</button>
+                            <div class="col-md-12 text-right m-0 p-3">
+                                <button type="submit"
+                                        class="btn btn-info text-light font-weight-bold rounded">{{__('Enregistrer')}}
+                                </button>
+                                <button type="reset"
+                                        class="btn btn-danger font-weight-bold text-light rounded">{{__('Annuler')}}
+                                </button>
                             </div>
                         </div>
                     </form>

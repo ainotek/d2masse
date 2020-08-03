@@ -14,21 +14,10 @@
                     <i class="icon-people"></i> {{__('Paroissiens')}}</a>
             </li>
 
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> {{ __('Demande de Messe') }}</a>
-                <ul class="nav-dropdown-items">
-                    {{-- <li class="nav-item">
-                        <a href="{{route('masses.index')}}" class="nav-link">
-                            <i class="icon-layers"></i> {{__('Programe des Messes')}}</a>
-                    </li> --}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('request-types.index') }}"><i class="icon-puzzle"></i> {{ __('Type demande') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('parishioners-request.index')}}" class="nav-link">
-                            <i class="icon-layers"></i> {{__('Demandes de messe')}}</a>
-                    </li>
-                </ul>
+            <li class="nav-item">
+                <a href="{{route('parishioners-request.index')}}" class="nav-link">
+                    <i class="icon-layers"></i> {{__('Demandes de messe')}}
+                </a>
             </li>
             <li class="nav-title">
                 {{__('Paroisses')}}
@@ -100,7 +89,7 @@
             </li>
 
             <li class="nav-item fixed-bottom">
-                <a class="nav-link" href="{{route('request-types.index')}}">
+                <a class="nav-link" href="{{route('logout')}}">
                     <i class="icon-power"></i> {{__('Deconnexion')}}
                 </a>
             </li>

@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web-admins',
+        'guard' => 'web',
         'passwords' => 'admins',
     ],
 
@@ -37,10 +37,6 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'web-admins' => [
             'driver' => 'session',
             'provider' => 'admins',
         ],
@@ -73,12 +69,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        'users' => [
+        'supervisors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Supervisor::class,
         ],
         'parishioners' => [
-            'driver' => 'eloquent',
+            'driver' => 'passport',
             'model' => App\Models\Parishioner::class,
         ],
     ],
@@ -106,7 +102,7 @@ return [
             'throttle' => 60,
         ],
         'users' => [
-            'provider' => 'users',
+            'provider' => 'supervisors',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

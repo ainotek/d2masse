@@ -14,6 +14,10 @@ class Parish extends Model
         return $this->hasMany(Mass::class);
     }
 
+    public function diocese(){
+        return $this->belongsTo(Diocese::class);
+    }
+
     public function city(){
         return $this->belongsTo(City::class);
     }

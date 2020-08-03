@@ -9,7 +9,7 @@ class ParishController extends Controller
 {
     public function index()
     {
-        $parishes = Parish::all();
+        $parishes = Parish::with('diocese', 'parishioners')->get();
 
         return view('admin.pages.parishes.index', compact('parishes'));
     }

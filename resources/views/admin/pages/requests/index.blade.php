@@ -32,13 +32,13 @@
                         <tbody>
                         @foreach($masses as $mass)
                             @foreach($mass->massRequests as $massRequest)
-                                <tr>
+                                <tr class="text-center">
                                     <td nowrap>{{$mass->parish->name}}</td>
                                     <td nowrap>{{$massRequest->receiver}}</td>
-                                    <td nowrap>{{$massRequest->parishioner->first_name . ' '. $massRequest->parishioner->last_name ?? ' - '}}</td>
+                                    <td nowrap>{{$massRequest->parishioner->first_name ?? '-'}} {{$massRequest->parishioner->last_name ?? '-'}}</td>
                                     <td nowrap>{{$mass->name}}</td>
                                     <td nowrap>{{$massRequest->requestType->name}}</td>
-                                    <td>{{$massRequest->message}}                                                                    </td>
+                                    <td>{{substr($massRequest->message,0, 60)}}...                                                                    </td>
                                     <td nowrap>
                                         <a class="btn btn-success" href="#">
                                             <i class="fa fa-search-plus "></i>

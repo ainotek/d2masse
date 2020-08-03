@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mass_request extends Model
 {
     use \Znck\Eloquent\Traits\BelongsToThrough;
-    protected $fillable = ["parishioner_id", "receiver", "request_type_id", "masse_id", "message"];
+    protected $fillable = ["parishioner_id", "receiver", "request_type_id", "mass_id", "message"];
     protected $dates = ['name_field'];
 
     public function masse()
