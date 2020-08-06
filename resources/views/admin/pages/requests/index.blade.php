@@ -35,18 +35,18 @@
                                 <tr class="text-center">
                                     <td nowrap>{{$mass->parish->name}}</td>
                                     <td nowrap>{{$massRequest->receiver}}</td>
-                                    <td nowrap>{{$massRequest->parishioner->first_name ?? '-'}} {{$massRequest->parishioner->last_name ?? '-'}}</td>
+                                    <td nowrap>{{$massRequest->parishioner->first_name ?? $massRequest->receiver}} {{$massRequest->parishioner->last_name ?? '-'}}</td>
                                     <td nowrap>{{$mass->name}}</td>
                                     <td nowrap>{{$massRequest->requestType->name}}</td>
                                     <td>{{substr($massRequest->message,0, 60)}}...                                                                    </td>
                                     <td nowrap>
-                                        <a class="btn btn-success" href="#">
+                                        <a class="btn btn-success rounded" href="#">
                                             <i class="fa fa-search-plus "></i>
                                         </a>
-                                        <a class="btn btn-info" href="#">
+                                        <a class="btn btn-info text-light rounded" href="#">
                                             <i class="fa fa-edit "></i>
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger rounded" href="#">
                                             <i class="fa fa-trash-o "></i>
                                         </a>
                                     </td>
