@@ -43,6 +43,11 @@
 <!-- Preloader Start -->
 
 <header>
+    @if (!empty($alert))
+        <script>
+            alert('Votre demande de messe a bien ete Enregistrer');
+        </script>
+    @endif
     <!-- Header Start -->
     <div class="header-area header-transparrent ">
         <div class="main-header header-sticky">
@@ -549,6 +554,8 @@
                                     <div class="input-group">
                                         <input type="text" name="receiver" class="form-control" id="receiver"
                                                placeholder="Nom et Prénoms">
+                                        <input type="hidden" name="return_url" class="form-control" id="receiver"
+                                               value="{{route('home')}}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -619,7 +626,7 @@
 
 <!-- Scrollup, nice-select, sticky -->
 <script src="{{asset('front/assets/js/jquery.scrollUp.min.js')}}"></script>
-<script src="{{asset('front/assets/js/jquery.nice-select.min.js')}}"></script>
+{{--<script src="{{asset('front/assets/js/jquery.nice-select.min.js')}}"></script>--}}
 <script src="{{asset('front/assets/js/jquery.sticky.js')}}"></script>
 
 <!-- contact js -->
@@ -660,7 +667,7 @@
                         console.log('Mass', item);
                         console.log( item.name );
                         massSelectInput.append(
-                            '<option value=" + item.id + ">" + item.name + "</option>'
+                            '<option value=' + item.id + '>' + item.name + '</option>'
                         );
                         console.log('Masses Select Input: ', massSelectInput);
                     }
