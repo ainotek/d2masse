@@ -27,6 +27,9 @@
         th {
             white-space: nowrap;
         }
+        #DataTables_Table_0_filter, #DataTables_Table_0_paginate {
+            float: right;
+        }
     </style>
 </head>
 
