@@ -25,26 +25,48 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($parishes as $parish)
+                            @foreach($parishes as $key => $parish)
                                 <tr class="text-center">
                                     <td width="200px">{{ $parish->name }}</td>
                                     <td nowrap="">{{ $parish->city->name }}</td>
                                     <td nowrap>{{ $parish->diocese->name }}</td>
                                     <td>{{ $parish->registration }}</td>
-                                    <td>{{$parish->parishioners->count()}}</td>
+                                    <td width="100px">{{$parish->parishioners->count()}}</td>
                                     <td>{{ $parish->phone }}</td>
                                     <td>{{ $parish->email }}</td>
-                                    <td width="200px">
-                                        <a class="btn btn-success" href="#">
-                                            <i class="fa fa-search-plus "></i>
-                                        </a>
+                                    <td width="300px">
                                         <a class="btn btn-info" href="#">
+                                            <i class="fa fa-eye "></i>
+                                        </a>
+                                        <a href="{{ route('parishes.edit', ['parish' => $parish->id]) }}" class="btn btn-warning" href="#">
                                             <i class="fa fa-edit "></i>
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#smallModal-{{ $key }}">
                                             <i class="fa fa-trash-o "></i>
-
-                                        </a>
+                                        </button>
+                                        <div class="modal fade" id="smallModal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm modal-danger" role="document">
+                                                <form action="{{ route('parishes.destroy', ['parish' => $parish->id]) }}" method="post">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Supprimer {{ $parish->name }}</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <strong>Cette action est irréversible, ête-vous sûr ?</strong>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Annuler</button>
+                                                                @csrf
+                                                                @method('delete')
+                                                            <button class="btn btn-danger">Oui, supprimer</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
