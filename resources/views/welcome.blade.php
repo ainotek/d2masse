@@ -62,9 +62,10 @@
                             <nav>
                                 <ul id="navigation">
                                     <li class="active"><a href="{{route('home')}}">{{__('Accueil')}}</a></li>
-                                    <li><a href="#">{{__('Demande de messe')}}</a></li>
+                                    <li><a href="#" data-toggle="modal"
+                                           data-target="#massRequestModal">{{__('Demande de messe')}}</a></li>
                                     <li><a href="#mobile-app">{{__('S\'inscrire')}}</a></li>
-                                    <li><a href="#">{{{__('Contact')}}}</a></li>
+                                    <li><a href="#contactSection">{{{__('Contact')}}}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -333,7 +334,7 @@
         </div>
     </div>
     <!-- Say Something End -->
-    <section class="contact-section mt-5">
+    <section id="contactSection" class="contact-section mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12 say-something-cap text-center">
@@ -512,48 +513,163 @@
 
 </footer>
 
+
+<!-- Modal -->
+<div class="modal fade" id="massRequestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg mt-0" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{_('Faire une demande de messe')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="" class="contact-section">
+                    <div class="container">
+                        <form id="requestForm" action="{{ route('parishioners-request.store') }}" method="post"
+                              data-masses-url="{{route('getMassesByParish', ["id"=> "#id"])}}">
+                            @csrf
+                            <div class="modal-body">
+                                <fieldset class="form-group">
+                                    <div>
+                                        <label for="select2-2">{{__('Paroisse')}}</label>
+                                    </div>
+                                    <select name="parish_id" id="select2-2" class="select2-single form-control">
+                                        <option value="">---Choisir la Paroisse---</option>
+                                        @foreach($parishes as $parish)
+                                            <option value="{{ $parish->id }}">{{ $parish->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </fieldset>
+                                <div class="form-group">
+                                    <label for="receiver">{{__('Demandeur')}}
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" name="receiver" class="form-control" id="receiver"
+                                               placeholder="Nom et Prénoms">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="request_type_id">{{__('Type de demande')}}
+                                    </label>
+                                    <div class="input-group">
+                                        <select name="request_type_id" id="request_type_id" class="form-control">
+                                            <option value="">---{{ __('Type de demande') }}---</option>
+                                            @foreach($requestsType as $requestType)
+                                                <option value="{{ $requestType->id }}">{{ $requestType->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mass_id">{{__('Messe')}}
+                                    </label>
+                                    <div class="input-group">
+                                        <select name="mass_id" id="mass_id" class="form-control" autocomplete="off">
+                                            <option value="" selected>---Choisir la Messe---</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">{{__('Message')}}</label>
+                                    <div class="input-group">
+                                        <textarea name="message" id="message" cols="30" rows="5" class="form-control"
+                                                  placeholder="{{ __('Ecrire la demande (texte limité à 120 charactere)') }}"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right m-0 p-3">
+                                    <button type="submit"
+                                            class="btn btn-primary text-light font-weight-bold rounded">{{__('Enregistrer')}}
+                                    </button>
+                                    <button type="reset"
+                                            class="btn btn-danger font-weight-bold text-light rounded">{{__('Annuler')}}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- JS here -->
 
 <!-- All JS Custom Plugins Link Here here -->
-<script src="{{asset('front/./assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
+<script src="{{asset('front/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 
 <!-- Jquery, Popper, Bootstrap -->
-<script src="{{asset('front/./assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
-<script src="{{asset('front/./assets/js/popper.min.js')}}"></script>
-<script src="{{asset('front/./assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('front/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+<script src="{{asset('front/assets/js/popper.min.js')}}"></script>
+<script src="{{asset('front/assets/js/bootstrap.min.js')}}"></script>
 <!-- Jquery Mobile Menu -->
-<script src="{{asset('front/./assets/js/jquery.slicknav.min.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.slicknav.min.js')}}"></script>
 
 <!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="{{asset('front/./assets/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('front/./assets/js/slick.min.js')}}"></script>
+<script src="{{asset('front/assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('front/assets/js/slick.min.js')}}"></script>
 <!-- Date Picker -->
-<script src="{{asset('front/./assets/js/gijgo.min.js')}}"></script>
+<script src="{{asset('front/assets/js/gijgo.min.js')}}"></script>
 <!-- One Page, Animated-HeadLin -->
-<script src="{{asset('front/./assets/js/wow.min.js')}}"></script>
-<script src="{{asset('front/./assets/js/animated.headline.js')}}"></script>
-<script src="{{asset('front/./assets/js/jquery.magnific-popup.js')}}"></script>
+<script src="{{asset('front/assets/js/wow.min.js')}}"></script>
+<script src="{{asset('front/assets/js/animated.headline.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.magnific-popup.js')}}"></script>
 
 <!-- Scrollup, nice-select, sticky -->
-<script src="{{asset('front/./assets/js/jquery.scrollUp.min.js')}}"></script>
-<script src="{{asset('front/./assets/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{asset('front/./assets/js/jquery.sticky.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.scrollUp.min.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.nice-select.min.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.sticky.js')}}"></script>
 
 <!-- contact js -->
-<script src="{{asset('front/./assets/js/contact.js')}}"></script>
-<script src="{{asset('front/./assets/js/jquery.form.js')}}"></script>
-<script src="{{asset('front/./assets/js/jquery.validate.min.js')}}"></script>
-<script src="{{asset('front/./assets/js/mail-script.js')}}"></script>
-<script src="{{asset('front/./assets/js/jquery.ajaxchimp.min.js')}}"></script>
+<script src="{{asset('front/assets/js/contact.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.form.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.validate.min.js')}}"></script>
+<script src="{{asset('front/assets/js/mail-script.js')}}"></script>
+<script src="{{asset('front/assets/js/jquery.ajaxchimp.min.js')}}"></script>
 
 <!-- Jquery Plugins, main Jquery -->
-<script src="{{asset('front/./assets/js/plugins.js')}}"></script>
-<script src="{{asset('front/./assets/js/main.js')}}"></script>
+<script src="{{asset('front/assets/js/plugins.js')}}"></script>
+<script src="{{asset('front/assets/js/main.js')}}"></script>
 
 <script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+    "use strict";
+    let parishSelectInput = $('#select2-2');
+    console.log('Selected Parish: ', parishSelectInput);
+    let massSelectInput = $('#mass_id');
+    console.log('Selected Mass', massSelectInput);
+    parishSelectInput.on("change", async function () {
+        console.log('here');
+        massSelectInput.find('option')
+            .remove().end().append('<option value="0" selected >---Choisir la Messe---</option>\n');
+        const parish_id = parishSelectInput.val();
+        console.log('Selected Parish ID: ', parish_id);
+        if (parish_id) {
+            console.log('Send Ajax request to server');
+            const getMassesUrl = document.getElementById('requestForm').dataset.massesUrl.replace("#id", parish_id);
+            console.log('Set Ajax Request url', getMassesUrl);
+            const response = await fetch(getMassesUrl);
+            if (response.ok) {
+                console.log('Ajax Request Success');
+                const massOptions = await response.json();
+                console.log('All Parish Masses', massOptions);
+                if (massOptions) {
+                    for (let i = 0; i < massOptions.length; i++) {
+                        const item = massOptions[i];
+                        console.log('Mass', item);
+                        console.log( item.name );
+                        massSelectInput.append(
+                            '<option value=" + item.id + ">" + item.name + "</option>'
+                        );
+                        console.log('Masses Select Input: ', massSelectInput);
+                    }
+                }
+            } else {
+                console.log('Ajax Request Failed');
+            }
+        }
+    });
 </script>
 </body>
 </html>

@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', 'PageController@home')->name('home');
 Route::group(['middleware' => ['guest:web'], 'prefix' => 'admin',], function () {
 
     Route::get('connexion', 'AuthenticationController@adminLogin')->name('login');
