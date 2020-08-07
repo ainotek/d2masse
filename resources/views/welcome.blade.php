@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     {{--<link rel="shortcut icon" type="image/x-icon" href="{{asset('front/assets/img/favicon.ico')}}">--}}
-    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
+    <link rel="shortcut icon" href="{{asset('img/logo.jpg')}}">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap.min.css')}}">
@@ -24,7 +24,14 @@
     <link rel="stylesheet" href="{{asset('front/assets/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('front/assets/css/style.css')}}">
 </head>
-
+<style>
+    #top_bar_fixed{
+        background-color: #f4feff;
+    }
+    #top_bar_fixed{
+        background-color: #f4feff;
+    }
+</style>
 <body>
 
 <!-- Preloader Start -->
@@ -43,21 +50,16 @@
 <!-- Preloader Start -->
 
 <header>
-    @if (!empty($alert))
-        <script>
-            alert('Votre demande de messe a bien ete Enregistrer');
-        </script>
-    @endif
     <!-- Header Start -->
     <div class="header-area header-transparrent ">
-        <div class="main-header header-sticky">
+        <div class="main-header header-sticky fixed-top">
             <div class="container">
                 <div class="row align-items-center">
                     <!-- Logo -->
                     <div class="col-xl-2 col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="index.html">D2messe
-                                <img src="{{asset('front/assets/img/logo/logo.png')}}" alt="">
+                                <img src="{{asset('front/assets/img/logo/logo.jpg')}}" alt="" height="55px">
                             </a>
                         </div>
                     </div>
@@ -354,33 +356,35 @@
                                     <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
                                               onfocus="this.placeholder = ''"
                                               onblur="this.placeholder = 'Enter Message'"
-                                              placeholder=" Enter Message"></textarea>
+                                              placeholder=" {{__('Message...')}} Message"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="name" id="name" type="text"
                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
-                                           placeholder="Enter your name">
+                                           placeholder="{{__('Entrer votre nom')}}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="email" id="email" type="email"
                                            onfocus="this.placeholder = ''"
-                                           onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                           onblur="this.placeholder = 'Enter email address'"
+                                           placeholder="{{__('Entrer votre addresse email')}}">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <input class="form-control" name="subject" id="subject" type="text"
                                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
-                                           placeholder="Enter Subject">
+                                           placeholder="{{__('Objet')}}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mt-3 text-center">
-                            <button type="submit" class="button button-contactForm boxed-btn rounded">Send</button>
+                            <button type="submit"
+                                    class="button button-contactForm boxed-btn rounded ">{{__('Envoyer')}}</button>
                         </div>
                     </form>
                 </div>
@@ -395,15 +399,15 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                         <div class="media-body">
-                            <h3>+1 253 565 2365</h3>
-                            <p>Mon to Fri 9am to 6pm</p>
+                            <h3>+225 07 00 00 00</h3>
+                            <p>{{__('Lundi au Vendredi de 8h à 20h')}}</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-email"></i></span>
                         <div class="media-body">
-                            <h3>support@colorlib.com</h3>
-                            <p>Send us your query anytime!</p>
+                            <h3>support@d2messe.com</h3>
+                            <p>{{__('Envoyez-nous vos demandes à tout moment!')}}</p>
                         </div>
                     </div>
                 </div>
@@ -603,7 +607,11 @@
     </div>
 </div>
 <!-- JS here -->
-
+<script>
+    @if (isset($alert))
+    alert('Votre demande de messe a bien ete Enregistrer');
+    @endif
+</script>
 <!-- All JS Custom Plugins Link Here here -->
 <script src="{{asset('front/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 
@@ -639,44 +647,7 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="{{asset('front/assets/js/plugins.js')}}"></script>
 <script src="{{asset('front/assets/js/main.js')}}"></script>
+<script src="{{ asset('js/customVue.js') }}"></script>
 
-<script>
-    "use strict";
-    let parishSelectInput = $('#select2-2');
-    console.log('Selected Parish: ', parishSelectInput);
-    let massSelectInput = $('#mass_id');
-    console.log('Selected Mass', massSelectInput);
-    parishSelectInput.on("change", async function () {
-        console.log('here');
-        massSelectInput.find('option')
-            .remove().end().append('<option value="0" selected >---Choisir la Messe---</option>\n');
-        const parish_id = parishSelectInput.val();
-        console.log('Selected Parish ID: ', parish_id);
-        if (parish_id) {
-            console.log('Send Ajax request to server');
-            const getMassesUrl = document.getElementById('requestForm').dataset.massesUrl.replace("#id", parish_id);
-            console.log('Set Ajax Request url', getMassesUrl);
-            const response = await fetch(getMassesUrl);
-            if (response.ok) {
-                console.log('Ajax Request Success');
-                const massOptions = await response.json();
-                console.log('All Parish Masses', massOptions);
-                if (massOptions) {
-                    for (let i = 0; i < massOptions.length; i++) {
-                        const item = massOptions[i];
-                        console.log('Mass', item);
-                        console.log( item.name );
-                        massSelectInput.append(
-                            '<option value=' + item.id + '>' + item.name + '</option>'
-                        );
-                        console.log('Masses Select Input: ', massSelectInput);
-                    }
-                }
-            } else {
-                console.log('Ajax Request Failed');
-            }
-        }
-    });
-</script>
 </body>
 </html>
