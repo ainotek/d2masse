@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CountryValidateRequest extends FormRequest
+class CityValidateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class CountryValidateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|unique:countries',
-            'iso' => 'required|min:2|max:2|unique:countries',
+            'name' => 'required|min:3|unique:cities',
+            'country_id' => 'required'
         ];
     }
 }

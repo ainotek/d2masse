@@ -11,4 +11,9 @@ class Country extends Model
         'name',
         'iso'
     ];
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }
