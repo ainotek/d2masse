@@ -8,7 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('front/assets/img/favicon.ico')}}">
+    {{--<link rel="shortcut icon" type="image/x-icon" href="{{asset('front/assets/img/favicon.ico')}}">--}}
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap.min.css')}}">
@@ -27,6 +28,7 @@
 <body>
 
 <!-- Preloader Start -->
+{{--
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
@@ -37,6 +39,7 @@
         </div>
     </div>
 </div>
+--}}
 <!-- Preloader Start -->
 
 <header>
@@ -48,7 +51,9 @@
                     <!-- Logo -->
                     <div class="col-xl-2 col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="index.html"><img src="{{asset('front/assets/img/logo/logo.png')}}" alt=""></a>
+                            <a href="index.html">D2messe
+                                <img src="{{asset('front/assets/img/logo/logo.png')}}" alt="">
+                            </a>
                         </div>
                     </div>
                     <div class="col-xl-10 col-lg-10 col-md-10">
@@ -56,18 +61,10 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li class="active"><a href="index.html">{{__('Accueil')}}</a></li>
-                                    <li><a href="feature.html">{{__('Demande de messe')}}</a></li>
-                                    <li><a href="services.html">{{__('S\'inscrire')}}</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="single-blog.html">Blog Details</a></li>
-                                            <li><a href="elements.html">Element</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li class="active"><a href="{{route('home')}}">{{__('Accueil')}}</a></li>
+                                    <li><a href="#">{{__('Demande de messe')}}</a></li>
+                                    <li><a href="#mobile-app">{{__('S\'inscrire')}}</a></li>
+                                    <li><a href="#">{{{__('Contact')}}}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -100,13 +97,14 @@
                                 <!-- Slider btn -->
                                 <div class="slider-btns">
                                     <!-- Hero-btn -->
-                                    <a data-animation="fadeInLeft" data-delay="1.0s" href="industries.html"
-                                       class="btn radius-btn">Download</a>
+                                    <a data-animation="fadeInLeft" data-delay="1.0s" href="#mobile-app"
+                                       class="btn radius-btn">{{__('Telecharger l\'application')}}</a>
                                     <!-- Video Btn -->
                                     <a data-animation="fadeInRight" data-delay="1.0s"
                                        class="popup-video video-btn ani-btn"
-                                       href="https://www.youtube.com/watch?v=1aP-TXUpNoU"><i
-                                            class="fas fa-play"></i></a>
+                                       href="https://www.youtube.com/watch?v=1aP-TXUpNoU"
+                                       data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                                        <i class="fas fa-play"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -275,184 +273,8 @@
         </div>
     </section>
     <!-- Services Area End -->
-    <!-- Applic App Start -->
-    <div class="applic-apps section-padding2">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- slider Heading -->
-                <div class="col-xl-4 col-lg-4 col-md-8">
-                    <div class="single-cases-info mb-30">
-                        <h3>Applic Apps<br> Screenshot</h3>
-                        <p>Lorem ipsum dolor sit amet, consecadipiscing elit, sed do eiusmod tempor incididunt ut ore et
-                            dolore magna aliqua. Quis ipsum suspendisse gravida. Risus commodo viverra maecenasan lacus
-                            vel facilisis. </p>
-                    </div>
-                </div>
-                <!-- OwL -->
-                <div class="col-xl-8 col-lg-8 col-md-col-md-7">
-                    <div class="app-active owl-carousel">
-                        <div class="single-cases-img">
-                            <img src="{{asset('front/assets/img/gallery/App1.png')}}" alt="">
-                        </div>
-                        <div class="single-cases-img">
-                            <img src="{{asset('front/assets/img/gallery/App2.png')}}" alt="">
-                        </div>
-                        <div class="single-cases-img">
-                            <img src="{{asset('front/assets/img/gallery/App3.png')}}" alt="">
-                        </div>
-                        <div class="single-cases-img">
-                            <img src="{{asset('front/assets/img/gallery/App2.png')}}" alt="">
-                        </div>
-                        <div class="single-cases-img">
-                            <img src="{{asset('front/assets/img/gallery/App1.png')}}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Applic App End -->
-    <!-- Best Pricing Start -->
-    <section class="best-pricing pricing-padding" data-background="assets/img/gallery/best_pricingbg.jpg">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-6 col-md-8">
-                    <div class="section-tittle section-tittle2 text-center">
-                        <h2>Choose Your Very Best Pricing Plan.</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Best Pricing End -->
-    <!-- Pricing Card Start -->
-    <div class="pricing-card-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-card text-center mb-30">
-                        <div class="card-top">
-                            <span>2 Years</span>
-                            <h4>$05 <span>/ month</span></h4>
-                        </div>
-                        <div class="card-bottom">
-                            <ul>
-                                <li>Increase traffic 50%</li>
-                                <li>E-mail support</li>
-                                <li>10 Free Optimization</li>
-                                <li>24/7 support</li>
-                            </ul>
-                            <a href="services.html" class="btn card-btn1">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-card  text-center mb-30">
-                        <div class="card-top">
-                            <span>2 Years</span>
-                            <h4>$05 <span>/ month</span></h4>
-                        </div>
-                        <div class="card-bottom">
-                            <ul>
-                                <li>Increase traffic 50%</li>
-                                <li>E-mail support</li>
-                                <li>10 Free Optimization</li>
-                                <li>24/7 support</li>
-                            </ul>
-                            <a href="services.html" class="btn card-btn1">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single-card text-center mb-30">
-                        <div class="card-top">
-                            <span>2 Years</span>
-                            <h4>$05 <span>/ month</span></h4>
-                        </div>
-                        <div class="card-bottom">
-                            <ul>
-                                <li>Increase traffic 50%</li>
-                                <li>E-mail support</li>
-                                <li>10 Free Optimization</li>
-                                <li>24/7 support</li>
-                            </ul>
-                            <a href="services.html" class="btn card-btn1">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pricing Card End -->
-    <!-- Our Customer Start -->
-    <div class="our-customer section-padd-top30">
-        <div class="container-fluid">
-            <div class="our-customer-wrapper">
-                <!-- Section Tittle -->
-                <div class="row d-flex justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="section-tittle text-center">
-                            <h2>What Our Customers<br> Have to Say</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="customar-active dot-style d-flex dot-style">
-                            <div class="single-customer mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('front/assets/img/shape/man1.png')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip ex ea
-                                        commodo consequat duis aute irure dolor in represse.</p>
-                                </div>
-                            </div>
-
-                            <div class="single-customer mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('front/assets/img/shape/man2.png')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip ex ea
-                                        commodo consequat duis aute irure dolor in represse.</p>
-                                </div>
-                            </div>
-
-                            <div class="single-customer mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('front/assets/img/shape/man3.png')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip ex ea
-                                        commodo consequat duis aute irure dolor in represse.</p>
-                                </div>
-                            </div>
-
-                            <div class="single-customer mb-100">
-                                <div class="what-img">
-                                    <img src="{{asset('front/assets/img/shape/man2.png')}}" alt="">
-                                </div>
-                                <div class="what-cap">
-                                    <h4><a href="#">Welcome To The Best Model Winner Contest</a></h4>
-                                    <p>Utenim ad minim veniam quisnostrud exercitation ullamcolabor nisiut aliquip ex ea
-                                        commodo consequat duis aute irure dolor in represse.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Our Customer End -->
     <!-- Available App  Start-->
-    <div class="available-app-area">
+    <div id="mobile-app" class="available-app-area">
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-xl-5 col-lg-6">
@@ -511,6 +333,77 @@
         </div>
     </div>
     <!-- Say Something End -->
+    <section class="contact-section mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 say-something-cap text-center">
+                    <h1 class="contact-title">{{__('Nous contacter')}}</h1>
+                </div>
+                <div class="col-lg-8">
+                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+                          novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
+                                              onfocus="this.placeholder = ''"
+                                              onblur="this.placeholder = 'Enter Message'"
+                                              placeholder=" Enter Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="name" id="name" type="text"
+                                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
+                                           placeholder="Enter your name">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="email" id="email" type="email"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="subject" id="subject" type="text"
+                                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"
+                                           placeholder="Enter Subject">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3 text-center">
+                            <button type="submit" class="button button-contactForm boxed-btn rounded">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-home"></i></span>
+                        <div class="media-body">
+                            <h3>Buttonwood, California.</h3>
+                            <p>Rosemead, CA 91770</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                        <div class="media-body">
+                            <h3>+1 253 565 2365</h3>
+                            <p>Mon to Fri 9am to 6pm</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i></span>
+                        <div class="media-body">
+                            <h3>support@colorlib.com</h3>
+                            <p>Send us your query anytime!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </main>
 <footer>
@@ -524,13 +417,16 @@
                         <div class="single-footer-caption mb-30">
                             <!-- logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="{{asset('front/assets/img/logo/logo2_footer.png')}}"
-                                                          alt=""></a>
+                                <a href="index.html">
+                                    <img src="{{asset('front/assets/img/logo/logo2_footer.png')}}" alt="">
+                                </a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p class="info1">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do
-                                        eiusmod tempor incididunt ut labore.</p>
+                                    <p class="info1">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do
+                                        eiusmod tempor incididunt ut labore.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -582,8 +478,10 @@
                                                    onblur="this.placeholder = ' Email Address '">
                                             <div class="form-icon">
                                                 <button type="submit" name="submit" id="newsletter-submit"
-                                                        class="email_icon newsletter-submit button-contactForm"><img
-                                                        src="assets/img/shape/form_icon.png')}}" alt=""></button>
+                                                        class="email_icon newsletter-submit button-contactForm bg-purple">
+                                                    <img
+                                                        src="{{asset('front/assets/img/shape/form_icon.png')}}" alt="">
+                                                </button>
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
@@ -594,14 +492,14 @@
                     </div>
                 </div>
                 <!-- Copy-Right -->
-                <div class="row align-items-center">
+                <div class="row align-items-center d-none">
                     <div class="col-xl-12 ">
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                All rights reserved | This template is made with <i class="ti-heart"
-                                                                                    aria-hidden="true"></i> by <a
-                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                All rights reserved | This template is made with
+                                <i class="ti-heart" aria-hidden="true"></i> by
+                                <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
@@ -652,5 +550,10 @@
 <script src="{{asset('front/./assets/js/plugins.js')}}"></script>
 <script src="{{asset('front/./assets/js/main.js')}}"></script>
 
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 </body>
 </html>

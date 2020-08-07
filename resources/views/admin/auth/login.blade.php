@@ -71,6 +71,9 @@
                             <a href="mailto:support@ainotek.com" class="btn btn-primary active mt-3">
                                 <i class="icon-paper-plane mr-2"></i> {{__('Nous écrire')}}
                             </a>
+                            <a href="{{route('home')}}" class="btn bg-white text-primary border-light active mt-3">
+                                <i class="icon-arrow-left mr-2"></i> {{__('Retourner à l\'accueil')}}
+                            </a>
                         </div>
                     </div>
                 </div>
