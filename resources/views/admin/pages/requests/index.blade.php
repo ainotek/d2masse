@@ -17,15 +17,18 @@
                     </div> --}}
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped table-bordered datatable">
+                    <table class="table table-striped table-bordered datatable table-responsive nowrap text-center">
                         <thead>
                         <tr>
                             <th>{{__('Paroisse')}}</th>
                             <th>{{__('Receveur')}}</th>
                             <th>{{__('Demandeur')}}</th>
                             <th>{{__('Messe')}}</th>
+                            <th>{{__('Heure de la messe')}}</th>
                             <th>{{__('Type de demande')}}</th>
                             <th>{{__('Message')}}</th>
+                            <th>{{__('Date de creation')}}</th>
+                            <th>{{__('Date de modification')}}</th>
                             <th>{{__('Actions')}}</th>
                         </tr>
                         </thead>
@@ -35,18 +38,23 @@
                                 <tr class="text-center">
                                     <td nowrap>{{$mass->parish->name}}</td>
                                     <td nowrap>{{$massRequest->receiver}}</td>
-                                    <td nowrap>{{$massRequest->parishioner->first_name ?? '-'}} {{$massRequest->parishioner->last_name ?? '-'}}</td>
+                                    <td nowrap>{{$massRequest->parishioner->first_name ?? $massRequest->receiver}} {{$massRequest->parishioner->last_name ?? '-'}}</td>
                                     <td nowrap>{{$mass->name}}</td>
+                                    <td nowrap>{{$mass->start_at}}</td>
                                     <td nowrap>{{$massRequest->requestType->name}}</td>
-                                    <td>{{substr($massRequest->message,0, 60)}}...                                                                    </td>
+                                    <td nowrap width="250">{{substr($massRequest->message,0, 60)}}...</td>
+
+                                    <td nowrap>{{$massRequest->created_at->format('d/m/Y H:i:s')}}</td>
+                                    <td nowrap>{{$massRequest->updated_at->format('d/m/Y H:i:s')}}</td>
+
                                     <td nowrap>
-                                        <a class="btn btn-success" href="#">
+                                        <a class="btn btn-success rounded" href="#">
                                             <i class="fa fa-search-plus "></i>
                                         </a>
-                                        <a class="btn btn-info" href="#">
+                                        <a class="btn btn-info text-light rounded" href="#">
                                             <i class="fa fa-edit "></i>
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger rounded" href="#">
                                             <i class="fa fa-trash-o "></i>
                                         </a>
                                     </td>

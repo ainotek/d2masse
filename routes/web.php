@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-})->name('home');
-Route::group(['middleware' => ['guest:web']], function () {
+Route::get('/', 'PageController@home')->name('home');
+Route::group(['middleware' => ['guest:web'], 'prefix' => 'admin',], function () {
 
     Route::get('connexion', 'AuthenticationController@adminLogin')->name('login');
     Route::post('connexion', 'AuthenticationController@adminAuthentication')->name('admins.authentication');

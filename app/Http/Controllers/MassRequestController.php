@@ -37,7 +37,12 @@ class MassRequestController extends Controller
     public function store(Request $request)
     {
         $data = $request->only( "parishioner_id", "receiver", "request_type_id", "mass_id", "message");
-        dump($data);
+        $return_url = "parishioners-request.index";
+        //dd($request->has('return_url'));
+        if($request->has('return_url'))
+            $return_url = "home";
+            $alert = true;
+        //dd($data, $return_url, $alert);
         try {
             $parishionerRequest = Mass_request::create($data);
             //dd($parishionerRequest);
@@ -47,10 +52,10 @@ class MassRequestController extends Controller
             $request->session()->flash('message', "Demande ajouté avec succès");
             $request->session()->flash('alert-class', 'alert-success');
 
-            return redirect()->route("parishioners-request.index");
+            //dd($data, $return_url, $alert);
+            return redirect()->route( $return_url, compact('alert'));
         } catch (\Exception $e) {
             dd($e);
-
         }
     }
 

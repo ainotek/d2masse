@@ -1,4 +1,5 @@
 (function () {
+    console.log('loaded');
     let parishSelect = document.getElementById('select2-2');
     console.log(parishSelect);
     let massSelect = $('#mass_id');
