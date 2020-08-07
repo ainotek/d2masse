@@ -14,6 +14,18 @@ class RequestTypeController extends Controller
         return view('admin.pages.requestTypes.index', compact('requestsType'));
     }
 
+    public function edit($id)
+    {
+        try {
+            $requestType = Request_type::find($id);
+        } catch (\Exception $e) {
+            dump($e->getMessage());
+            die();
+        }
+
+        return view('admin.pages.requestTypes.edit', compact('requestType'));
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([

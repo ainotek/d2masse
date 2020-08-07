@@ -6,12 +6,9 @@
         <div class="animated fadeIn">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('parishes.create') }}" class="btn btn-primary rounded"> <i class="fa fa-plus-circle"></i> <strong> {{__('Ajouter une Paroisse')}}</strong></a>
-                    {{-- <div class="card-actions">
-                        <a href="https://datatables.net">
-                            <small class="text-muted">docs</small>
-                        </a>
-                    </div> --}}
+                    <a href="{{ route('parishes.create') }}" class="btn btn-primary rounded">
+                        <i class="fa fa-plus-circle"></i> <strong>{{__('Ajouter une paroisse')}}</strong>
+                    </a>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered datatable">

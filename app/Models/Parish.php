@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parish extends Model
 {
+    protected $fillable = [
+        'name',
+        'longitude',
+        'latitude',
+        'diocese_id',
+        'registration',
+        'phone',
+        'email',
+        'city_id'
+    ];
+
     public function parishioners(){
         return $this->hasMany(Parishioner::class);
     }
