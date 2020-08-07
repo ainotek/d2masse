@@ -25,14 +25,20 @@
                                         <div class="form-group">
                                             <label for="name">{{__('Nom')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
+                                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
                                             </div>
+                                            @error('name')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="iso">{{__('Code ISO')}}</label>
                                             <div class="input-group">
-                                                <input type="text" id="iso" name="iso" class="form-control" placeholder="{{__('Exemple : CI')}}">
+                                                <input type="text" id="iso" required name="iso" class="form-control" placeholder="{{__('Exemple : CI')}}">
                                             </div>
+                                            @error('iso')
+                                                <small class="text-danger">{{ $message }}</small>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -69,7 +75,7 @@
                                         </button>
                                         <div class="modal fade" id="smallModal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-sm modal-danger" role="document">
-                                                <form action="{{ route('countries.delete', ['country' => $country->id]) }}" method="post">
+                                                <form action="{{ route('countries.destroy', ['country' => $country->id]) }}" method="post">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h4 class="modal-title">Supprimer {{ $country->name }}</h4>
