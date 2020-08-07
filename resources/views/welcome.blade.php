@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{asset('front/assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('front/assets/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('front/assets/css/style.css')}}">
+    <script charset="utf-8" src="https://www.cinetpay.com/cdn/seamless_sdk/latest/cinetpay.sandbox.min.js" type="text/javascript"></script>
+    <script src="{{asset('payment.js')}}" type="text/javascript"></script>
 </head>
 <style>
     #top_bar_fixed{
@@ -32,7 +34,7 @@
         background-color: #f4feff;
     }
 </style>
-<body>
+<body onload="init()">
 
 <!-- Preloader Start -->
 {{--
@@ -52,7 +54,7 @@
 <header>
     <!-- Header Start -->
     <div class="header-area header-transparrent ">
-        <div class="main-header header-sticky fixed-top">
+        <div id="top_bar_fixed" class="main-header header-sticky fixed-top">
             <div class="container">
                 <div class="row align-items-center">
                     <!-- Logo -->
@@ -73,6 +75,7 @@
                                            data-target="#massRequestModal">{{__('Demande de messe')}}</a></li>
                                     <li><a href="#mobile-app">{{__('S\'inscrire')}}</a></li>
                                     <li><a href="#contactSection">{{{__('Contact')}}}</a></li>
+                                    <li><a href="#donation">{{{__('Faire un don')}}}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -606,6 +609,38 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<form id="info_paiement">
+    <p>Welcome,</p>
+    <p>This example is creating a payment</p>
+    <hr/>
+    <p>
+        <input type="text" class="form-control" placeholder="Montant" id="amount" name="amount" value="10">
+    </p>
+    <p>
+        <input type="text" class="form-control" placeholder="Devise" value="CFA" name="currency"
+               id="currency">
+    </p>
+    <p>
+        <input type="text" class="form-control" placeholder="Ref transaction" autocomplete="off"
+               id="trans_id" value="">
+    </p>
+    <p>
+        <input type="text" class="form-control" placeholder="Valeur Custom" autocomplete="off"
+               id="cpm_custom" value="">
+    </p>
+    <p>
+        <input type="text" class="form-control" placeholder="Designation du produit" id="designation"
+               value="Achat de chaussure noir">
+    </p>
+    <p>
+        <button type="button" class="btn btn-default" id="bt_get_signature">Process payment</button>
+    </p>
+</form>
 <!-- JS here -->
 <script>
     @if (isset($alert))
