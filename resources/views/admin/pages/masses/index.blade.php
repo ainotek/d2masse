@@ -9,80 +9,6 @@
                     <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#largeModal">
                         <i class="fa fa-plus-circle"></i> <strong>{{__('Messe')}}</strong>
                     </button>
-                    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Création d'une Messe</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <form action="{{ route('masses.store') }}" method="post">
-                                    @csrf
-                                    @method('post')
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="parish_id">{{__('Paroisse')}}</label>
-                                            <select name="parish_id" id="parish_id" class="form-control">
-                                                <option value="">----{{ __('Choisir la paroisse') }}----</option>
-                                                @foreach($parishes as $parish)
-                                                    <option value="{{ $parish->id }}">{{ $parish->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('parish_id')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">{{__('Nom')}}</label>
-                                            <div class="input-group">
-                                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom de la Messe')}}">
-                                            </div>
-                                            @error('name')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="start_day">{{__('Date')}}</label>
-                                            <div class="input-group">
-                                                <input required type="date" id="start_day" name="start_day" class="form-control" placeholder="{{__('Date')}}">
-                                            </div>
-                                            @error('start_day')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="start_at">{{__('Heure')}}</label>
-                                            <div class="input-group">
-                                                <input required type="time" id="start_at" name="start_at" class="form-control" placeholder="{{__('Heure')}}">
-                                            </div>
-                                            @error('start_at')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="request_closed_at">
-                                                {{__('Fermetture')}} <small class="text-primary">{{ __('(Heure de fermeture des demandes pour cette Messe)') }}</small>
-                                            </label>
-                                            <div class="input-group">
-                                                <input required type="time" id="request_closed_at" name="request_closed_at" class="form-control">
-                                            </div>
-                                            @error('request_closed_at')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
-                                        <button type="submit" class="btn btn-success">Créer</button>
-                                    </div>
-                                </form>
-                            </div>
-                          <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered datatable">
@@ -148,5 +74,80 @@
 
     </div>
     <!-- /.conainer-fluid -->
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Création d'une Messe</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{ route('masses.store') }}" method="post">
+                    @csrf
+                    @method('post')
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="parish_id">{{__('Paroisse')}}</label>
+                            <select name="parish_id" id="parish_id" class="form-control">
+                                <option value="">----{{ __('Choisir la paroisse') }}----</option>
+                                @foreach($parishes as $parish)
+                                    <option value="{{ $parish->id }}">{{ $parish->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('parish_id')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="name">{{__('Nom')}}</label>
+                            <div class="input-group">
+                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom de la Messe')}}">
+                            </div>
+                            @error('name')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="start_day">{{__('Date')}}</label>
+                            <div class="input-group">
+                                <input required type="date" id="start_day" name="start_day" class="form-control" placeholder="{{__('Date')}}">
+                            </div>
+                            @error('start_day')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="start_at">{{__('Heure')}}</label>
+                            <div class="input-group">
+                                <input required type="time" id="start_at" name="start_at" class="form-control" placeholder="{{__('Heure')}}">
+                            </div>
+                            @error('start_at')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="request_closed_at">
+                                {{__('Fermetture')}} <small class="text-primary">{{ __('(Heure de fermeture des demandes pour cette Messe)') }}</small>
+                            </label>
+                            <div class="input-group">
+                                <input required type="time" id="request_closed_at" name="request_closed_at" class="form-control">
+                            </div>
+                            @error('request_closed_at')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-success">Créer</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
 @stop
 

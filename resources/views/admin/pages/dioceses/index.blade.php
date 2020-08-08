@@ -9,42 +9,6 @@
                     <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#largeModal">
                         <i class="fa fa-plus-circle"></i> <strong>{{__('Diocèse')}}</strong>
                     </button>
-                    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Ajout d'un nouveau Diocèse</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <form action="{{ route('dioceses.store') }}" method="post">
-                                    @csrf
-                                    @method('post')
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="name">{{__('Nom')}}</label>
-                                            <div class="input-group">
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">{{__('Localisation')}}</label>
-                                            <div class="input-group">
-                                                <input type="text" id="location" name="location" class="form-control" placeholder="{{__('Localisation')}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
-                                        <button type="submit" class="btn btn-success">Créer</button>
-                                    </div>
-                                </form>
-                            </div>
-                          <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
                     {{-- <a href="{{ route('parishionersRequest.create') }}" class="btn btn-primary rounded"> <i class="fa fa-plus-circle"></i> <strong> {{__('Demandes de messe')}}</strong></a>
                     <div class="card-actions">
                         <a href="https://datatables.net">
@@ -107,5 +71,42 @@
 
     </div>
     <!-- /.conainer-fluid -->
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ajout d'un nouveau Diocèse</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{ route('dioceses.store') }}" method="post">
+                    @csrf
+                    @method('post')
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">{{__('Nom')}}</label>
+                            <div class="input-group">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">{{__('Localisation')}}</label>
+                            <div class="input-group">
+                                <input type="text" id="location" name="location" class="form-control" placeholder="{{__('Localisation')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-success">Créer</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
 @stop
 

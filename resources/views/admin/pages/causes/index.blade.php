@@ -8,60 +8,6 @@
                     <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#largeModal">
                         <i class="fa fa-plus-circle"></i> <strong>{{__('Cause')}}</strong>
                     </button>
-                    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Création d'une cause</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <form action="{{ route('causes.store') }}" method="post">
-                                    @csrf
-                                    @method('post')
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="parish_id">{{__('Paroisse')}}</label>
-                                            <select name="parish_id" id="parish_id" class="form-control">
-                                                <option value="">----{{ __('Choisir la paroisse') }}----</option>
-                                                @foreach($parishes as $parish)
-                                                    <option value="{{ $parish->id }}">{{ $parish->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('parish_id')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">{{__('Nom')}}</label>
-                                            <div class="input-group">
-                                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nommer la cause')}}">
-                                            </div>
-                                            @error('name')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">{{__('Description')}}</label>
-                                            <div class="input-group">
-                                                <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Vous pouvez donner une description"></textarea>
-                                            </div>
-                                            @error('name')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
-                                        <button type="submit" class="btn btn-success">Créer</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered datatable">
@@ -120,5 +66,60 @@
 
     </div>
     <!-- /.conainer-fluid -->
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Création d'une cause</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{ route('causes.store') }}" method="post">
+                    @csrf
+                    @method('post')
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="parish_id">{{__('Paroisse')}}</label>
+                            <select name="parish_id" id="parish_id" class="form-control">
+                                <option value="">----{{ __('Choisir la paroisse') }}----</option>
+                                @foreach($parishes as $parish)
+                                    <option value="{{ $parish->id }}">{{ $parish->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('parish_id')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="name">{{__('Nom')}}</label>
+                            <div class="input-group">
+                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nommer la cause')}}">
+                            </div>
+                            @error('name')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="description">{{__('Description')}}</label>
+                            <div class="input-group">
+                                <textarea name="description" id="description" cols="30" rows="10" class="form-control" placeholder="Vous pouvez donner une description"></textarea>
+                            </div>
+                            @error('name')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-success">Créer</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
 @stop
 

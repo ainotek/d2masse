@@ -9,48 +9,6 @@
                     <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#largeModal">
                         <i class="fa fa-plus-circle"></i> <strong>{{__('Pays')}}</strong>
                     </button>
-                    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Création d'un pays</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <form action="{{ route('countries.store') }}" method="post">
-                                    @csrf
-                                    @method('post')
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="name">{{__('Nom')}}</label>
-                                            <div class="input-group">
-                                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
-                                            </div>
-                                            @error('name')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="iso">{{__('Code ISO')}}</label>
-                                            <div class="input-group">
-                                                <input type="text" id="iso" required name="iso" class="form-control" placeholder="{{__('Exemple : CI')}}">
-                                            </div>
-                                            @error('iso')
-                                                <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
-                                        <button type="submit" class="btn btn-success">Créer</button>
-                                    </div>
-                                </form>
-                            </div>
-                          <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
-                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered datatable">
@@ -105,6 +63,48 @@
             </div>
         </div>
 
+    </div>
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Création d'un pays</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="{{ route('countries.store') }}" method="post">
+                    @csrf
+                    @method('post')
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">{{__('Nom')}}</label>
+                            <div class="input-group">
+                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
+                            </div>
+                            @error('name')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="iso">{{__('Code ISO')}}</label>
+                            <div class="input-group">
+                                <input type="text" id="iso" required name="iso" class="form-control" placeholder="{{__('Exemple : CI')}}">
+                            </div>
+                            @error('iso')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-dark" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-success">Créer</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
     <!-- /.conainer-fluid -->
 @stop
