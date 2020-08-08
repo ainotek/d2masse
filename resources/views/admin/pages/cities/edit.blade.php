@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="animated fadeIn col-md-8 offset-md-2">
+        <div class="animated fadeIn col-md-10 offset-md-1">
             <div class="card">
                 <div class="card-header">
                     <a href="#" class="text-warning">

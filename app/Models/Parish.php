@@ -36,4 +36,9 @@ class Parish extends Model
     public function massesRequests(){
         return $this->hasManyThrough(Mass_request::class, Mass::class);
     }
+
+    public function causes()
+    {
+        return $this->hasMany(Cause::class);
+    }
 }
