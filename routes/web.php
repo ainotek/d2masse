@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth:web'], 'prefix' => 'admin',], function () {
     });
     Route::get('/tableau_de_bord', 'DashboardController@index')->name('dashboard');
     Route::resource('parishioners', 'ParishionerController');
-    Route::resource('users', 'SupervisorController');
+    Route::resource('supervisors', 'SupervisorController');
     Route::resource('masses', 'MassController');
     Route::resource('causes', 'CauseController');
     Route::resource('admins', 'AdminController');

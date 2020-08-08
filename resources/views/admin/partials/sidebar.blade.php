@@ -23,7 +23,7 @@
                 {{__('Paroisses')}}
             </li>
             <li class="nav-item">
-                <a href="{{route('users.index')}}" class="nav-link"><i class="icon-user"></i> {{__('Utilisateurs')}}</a>
+                <a href="{{route('supervisors.index')}}" class="nav-link"><i class="icon-user"></i> {{__('Superviseurs')}}</a>
             </li>
             <li class="nav-item nav-dropdown">
                 <a class="nav-link" href="{{route('masses.index')}}"><i class="icon-bell"></i> {{__('Messes')}}</a>

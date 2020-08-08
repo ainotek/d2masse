@@ -7,7 +7,8 @@
             <div class="card">
                 <div class="card-header">
                     <button type="button" class="btn btn-primary rounded" data-toggle="modal" data-target="#largeModal">
-                        <i class="fa fa-plus-circle"></i> <strong>{{__('Ville')}}</strong>
+                        <i class="fa fa-plus-circle"></i>
+                        <strong>{{__('Ville')}}</strong>
                     </button>
                 </div>
                 <div class="card-body">
@@ -20,28 +21,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($cities as $key => $city)
-                                <tr>
-                                    <td>{{ $city->country->name }}</td>
-                                    <td>{{ $city->name }}</td>
-                                    <td class="right">
-                                        <a href="{{ route('cities.edit', ['city' => $city->id]) }}" class="btn btn-warning" href="#">
-                                            <i class="fa fa-edit "></i>
-                                        </a>
-                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#smallModal-{{ $key }}">
-                                            <i class="fa fa-trash-o "></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($cities as $key => $city)
+                            <tr>
+                                <td>{{ $city->country->name }}</td>
+                                <td>{{ $city->name }}</td>
+                                <td class="right">
+                                    <a href="{{ route('cities.edit', ['city' => $city->id]) }}" class="btn btn-warning">
+                                        <i class="fa fa-edit "></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#smallModal-{{ $key }}">
+                                        <i class="fa fa-trash-o "></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
-    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,7 +71,8 @@
                         <div class="form-group">
                             <label for="name">{{__('Nom')}}</label>
                             <div class="input-group">
-                                <input required type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
+                                <input required type="text" id="name" name="name" class="form-control"
+                                       placeholder="{{__('Nom')}}">
                             </div>
                             @error('name')
                             <small class="text-danger">{{ $message }}</small>
@@ -87,31 +90,31 @@
         <!-- /.modal-dialog -->
     </div>
     @foreach($cities as $key => $city)
-        <div class="modal fade" id="smallModal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-danger" role="document">
-            <form action="{{ route('cities.destroy', ['city' => $city->id]) }}" method="post">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Supprimer {{ $city->name }}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
+        <div class="modal fade" id="smallModal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-danger" role="document">
+                <form action="{{ route('cities.destroy', ['city' => $city->id]) }}" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Supprimer {{ $city->name }}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <strong>Cette action est irréversible, ête-vous sûr ?</strong>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Annuler</button>
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger">Oui, supprimer</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <strong>Cette action est irréversible, ête-vous sûr ?</strong>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-dismiss="modal">Annuler</button>
-                        @csrf
-                        @method('delete')
-                        <button class="btn btn-danger">Oui, supprimer</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
     @endforeach
-
     <!-- /.conainer-fluid -->
 @stop
 
