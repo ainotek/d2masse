@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="CoreUI Pro Bootstrap 4 Admin Template">
-    <meta name="author" content="Lukasz Holeczek">
+    <meta name="author" content="Ben Ouattara">
     <meta name="keyword" content="CoreUI Pro Bootstrap 4 Admin Template">
     <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
 
@@ -38,26 +37,39 @@
                             <p class="text-muted">{{__('Connexion')}}</p>
                             <div class="input-group mb-1">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text"><i class="icon-user"></i></label>
+                                    <label for="emailInput" class="input-group-text">
+                                        <i class="icon-user"></i>
+                                    </label>
                                 </div>
-                                <input type="email" class="form-control" placeholder="{{__('email')}}" name="email" required>
+                                <input id="emailInput" type="email" class="form-control" placeholder="{{__('email')}}"
+                                       name="email"
+                                       required autocomplete="on">
                             </div>
                             @error('email')
-                                <em id="email-error" class="error text-red">{{__('Nom d\'utilisateur ou mot de passe incorrect')}}</em>
+                            <em id="email-error"
+                                class="error text-red">{{__('Nom d\'utilisateur ou mot de passe incorrect')}}</em>
                             @enderror
                             <div class="input-group mb-4 mt-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                                    <label for="passwordInput" class="input-group-text">
+                                        <i class="icon-lock"></i>
+                                    </label>
                                 </div>
-                                <input type="password" class="form-control" placeholder="{{__('Mot de passe')}}" name="password" required>
+                                <input id="passwordInput" type="password" class="form-control"
+                                       placeholder="{{__('Mot de passe')}}"
+                                       name="password" required autocomplete="on">
                             </div>
 
-                            <div class="row">
+                            <div class=" row">
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-primary px-4 rounded">{{__('Connexion')}}</button>
+                                    <button type="submit" class="btn btn-primary px-4 rounded">
+                                        {{__('Connexion')}}
+                                    </button>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <button type="button" class="btn btn-link px-0">{{__('Mot de passe oublié?')}}</button>
+                                    <button type="button" class="btn btn-link px-0">
+                                        {{__('Mot de passe oublié?')}}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -87,10 +99,10 @@
 <script src="{{asset('vendors/js/popper.min.js')}}"></script>
 <script src="{{asset('vendors/js/bootstrap.min.js')}}"></script>
 <script>
-    $(function (){
-        $.validator.setDefaults( {
+    $(function () {
+        $.validator.setDefaults({
             submitHandler: function () {
-                alert( 'submitted!' );
+                alert('submitted!');
             }
         });
         $('#signInForm').validate({
@@ -112,19 +124,19 @@
                 },
             },
             errorElement: 'em',
-            errorPlacement: function ( error, element ) {
-                error.addClass( 'invalid-feedback' );
-                if ( element.prop( 'type' ) === 'checkbox' ) {
-                    error.insertAfter( element.parent( 'label' ) );
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                if (element.prop('type') === 'checkbox') {
+                    error.insertAfter(element.parent('label'));
                 } else {
-                    error.insertAfter( element );
+                    error.insertAfter(element);
                 }
             },
-            highlight: function ( element, errorClass, validClass ) {
-                $( element ).addClass( 'is-invalid' ).removeClass( 'is-valid' );
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid').removeClass('is-valid');
             },
             unhighlight: function (element, errorClass, validClass) {
-                $( element ).addClass( 'is-valid' ).removeClass( 'is-invalid' );
+                $(element).addClass('is-valid').removeClass('is-invalid');
             }
         });
     });

@@ -1,6 +1,6 @@
 (function ($)
-  { "use strict"
-  
+  { "use strict";
+
 /* 1. Proloder */
     $(window).on('load', function () {
       $('#preloader-active').delay(450).fadeOut('slow');
@@ -110,7 +110,7 @@
           infinite: true,
           dots: false,
         }
-      }, 
+      },
            {
         breakpoint: 1050,
         settings: {
@@ -230,10 +230,13 @@
 
 
 /* 6. Nice Selectorp  */
-  var nice_Select = $('select');
-    if(nice_Select.length){
-      nice_Select.niceSelect();
-    }
+ /* var nice_Select = $('select') || false;
+  console.log('length',nice_Select);
+    if(nice_Select){
+        if (nice_Select.length){
+            nice_Select.niceSelect();
+        }
+    }*/
 
 /* 7.  Custom Sticky Menu  */
     $(window).on('scroll', function () {
@@ -279,8 +282,8 @@
     new WOW().init();
 
 /* 11. Datepicker */
-    
-// 11. ---- Mailchimp js --------//  
+
+// 11. ---- Mailchimp js --------//
     function mailChimp() {
       $('#mc_embed_signup').find('form').ajaxChimp();
     }

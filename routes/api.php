@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('parishes/{id}/masses', 'MassRequestController@getMasses')->name('getMassesByParish');
+Route::get('request-templates/{id}', 'RequestTemplateController@getRequestTemplates')->name('getTemplatesById');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

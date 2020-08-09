@@ -23,14 +23,21 @@
     <link rel="stylesheet" href="{{asset('front/assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('front/assets/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('front/assets/css/style.css')}}">
-    <script charset="utf-8" src="https://www.cinetpay.com/cdn/seamless_sdk/latest/cinetpay.sandbox.min.js" type="text/javascript"></script>
-    <script src="{{asset('payment.js')}}" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"
+            crossorigin="anonymous" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css"
+          crossorigin="anonymous"/>
+    <script charset="utf-8" src="https://cinetpay.com/cdn/seamless_sdk/latest/cinetpay.prod.min.js"
+            type="text/javascript"></script>
+    <script src="{{asset('payments.js')}}" type="text/javascript" async></script>
 </head>
 <style>
-    #top_bar_fixed{
+    #top_bar_fixed {
         background-color: #f4feff;
     }
-    #top_bar_fixed{
+
+    #top_bar_fixed {
         background-color: #f4feff;
     }
 </style>
@@ -54,7 +61,7 @@
 <header>
     <!-- Header Start -->
     <div class="header-area header-transparrent ">
-        <div id="top_bar_fixed" class="main-header header-sticky fixed-top">
+        <div id="top_bar_fixed" class="main-header header-sticky sticky-bar">
             <div class="container">
                 <div class="row align-items-center">
                     <!-- Logo -->
@@ -75,7 +82,7 @@
                                            data-target="#massRequestModal">{{__('Demande de messe')}}</a></li>
                                     <li><a href="#mobile-app">{{__('S\'inscrire')}}</a></li>
                                     <li><a href="#contactSection">{{{__('Contact')}}}</a></li>
-                                    <li><a href="#donation">{{{__('Faire un don')}}}</a></li>
+                                    <li><a class="payment" href="#donation">{{{__('Faire un don')}}}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -541,7 +548,8 @@
                 <div id="" class="contact-section">
                     <div class="container">
                         <form id="requestForm" action="{{ route('parishioners-request.store') }}" method="post"
-                              data-masses-url="{{route('getMassesByParish', ["id"=> "#id"])}}">
+                              data-masses-url="{{route('getMassesByParish', ["id"=> "#id"])}}"
+                              data-templates-url="{{route('getTemplatesById', ["id"=> "#id"])}}">
                             @csrf
                             <div class="modal-body">
                                 <fieldset class="form-group">
@@ -571,7 +579,7 @@
                                     <div class="input-group">
                                         <select name="request_type_id" id="request_type_id" class="form-control">
                                             <option value="">---{{ __('Type de demande') }}---</option>
-                                            @foreach($requestsType as $requestType)
+                                            @foreach($requestTypes as $requestType)
                                                 <option value="{{ $requestType->id }}">{{ $requestType->name }}</option>
                                             @endforeach
                                         </select>
@@ -586,10 +594,29 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="message">{{__('Message')}}</label>
                                     <div class="input-group">
-                                        <textarea name="message" id="message" cols="30" rows="5" class="form-control"
+                                        <label class="mr-2" for="use-template">{{__('Utiliser un Template?')}}</label>
+                                        <input class="ml-2 mt-1" id="use-template" type="checkbox">
+                                    </div>
+                                </div>
+                                <div id="template-select-div" class="form-group d-none">
+                                    <label for="template-select-input">{{__('Template')}}
+                                    </label>
+                                    <div class="input-group">
+                                        <select name="request_template_id" id="template-select-input" class="form-control">
+                                            <option value="">---{{ __('Template de demande') }}---</option>
+                                            @foreach($requestTemplates as $requestTemplate)
+                                                <option value="{{ $requestTemplate->id }}">{{ $requestTemplate->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-textarea">{{__('Message')}}</label>
+                                    <div class="input-group">
+                                        <textarea name="message" id="message-textarea" cols="30" rows="5" class="form-control"
                                                   placeholder="{{ __('Ecrire la demande (texte limité à 120 charactere)') }}"></textarea>
                                     </div>
                                 </div>
@@ -610,43 +637,7 @@
     </div>
 </div>
 
-
-
-
-
-<form id="info_paiement">
-    <p>Welcome,</p>
-    <p>This example is creating a payment</p>
-    <hr/>
-    <p>
-        <input type="text" class="form-control" placeholder="Montant" id="amount" name="amount" value="10">
-    </p>
-    <p>
-        <input type="text" class="form-control" placeholder="Devise" value="CFA" name="currency"
-               id="currency">
-    </p>
-    <p>
-        <input type="text" class="form-control" placeholder="Ref transaction" autocomplete="off"
-               id="trans_id" value="">
-    </p>
-    <p>
-        <input type="text" class="form-control" placeholder="Valeur Custom" autocomplete="off"
-               id="cpm_custom" value="">
-    </p>
-    <p>
-        <input type="text" class="form-control" placeholder="Designation du produit" id="designation"
-               value="Achat de chaussure noir">
-    </p>
-    <p>
-        <button type="button" class="btn btn-default" id="bt_get_signature">Process payment</button>
-    </p>
-</form>
 <!-- JS here -->
-<script>
-    @if (isset($alert))
-    alert('Votre demande de messe a bien ete Enregistrer');
-    @endif
-</script>
 <!-- All JS Custom Plugins Link Here here -->
 <script src="{{asset('front/assets/js/vendor/modernizr-3.5.0.min.js')}}"></script>
 
@@ -683,6 +674,8 @@
 <script src="{{asset('front/assets/js/plugins.js')}}"></script>
 <script src="{{asset('front/assets/js/main.js')}}"></script>
 <script src="{{ asset('js/customVue.js') }}"></script>
+<script>
 
+</script>
 </body>
 </html>

@@ -28,8 +28,8 @@
                             @foreach($parishes as $key => $parish)
                                 <tr class="text-center">
                                     <td width="200px">{{ $parish->name }}</td>
-                                    <td nowrap="">{{ $parish->city->name }}</td>
-                                    <td nowrap>{{ $parish->diocese->name }}</td>
+                                    <td nowrap="">{{ $parish->city->name ?? ''}}</td>
+                                    <td nowrap>{{ $parish->diocese->name ?? '' }}</td>
                                     <td>{{ $parish->registration }}</td>
                                     <td width="100px">{{$parish->parishioners->count()}}</td>
                                     <td>{{ $parish->phone }}</td>

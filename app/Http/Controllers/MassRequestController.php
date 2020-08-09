@@ -6,6 +6,7 @@ use App\Models\Mass;
 use App\Models\Parish;
 use App\Models\Parishioner;
 use App\Models\Mass_request;
+use App\Models\Request_template;
 use App\Models\Request_type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,11 +28,12 @@ class MassRequestController extends Controller
     public function create()
     {
         $parishioners = Parishioner::all();
-        $requestsType = Request_type::all();
+        $requestTypes = Request_type::all();
+        $requestTemplates = Request_template::all();
         $parishes = Parish::all();
         $masses = Mass::all();
 
-        return view('admin.pages.requests.create', compact('parishioners', 'requestsType', 'parishes', 'masses'));
+        return view('admin.pages.requests.create', compact('parishioners', 'requestTypes', 'parishes', 'masses', 'requestTemplates'));
     }
 
     public function store(Request $request)
