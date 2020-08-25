@@ -65,4 +65,10 @@ class Helpers
         }
         return $errors;
     }
+
+    public static function generateRandomString($num){
+        $permitted_chars = strtoupper('0123456789abcdefghijklmnopqrstuvwxyz');
+        // Output: 54esmdr0qf
+        return substr(str_shuffle($permitted_chars), 0, $num);
+    }
 }

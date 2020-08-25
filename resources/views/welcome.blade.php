@@ -30,7 +30,7 @@
           crossorigin="anonymous"/>
     <script charset="utf-8" src="https://cinetpay.com/cdn/seamless_sdk/latest/cinetpay.prod.min.js"
             type="text/javascript"></script>
-    <script src="{{asset('payments.js')}}" type="text/javascript" async></script>
+    <script src="{{asset('payments.js')}}" type="text/javascript" defer></script>
 </head>
 <style>
     #top_bar_fixed {
@@ -44,18 +44,16 @@
 <body onload="init()">
 
 <!-- Preloader Start -->
-{{--
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-                <img src="{{asset('front/assets/img/logo/logo.png')}}" alt="">
+                <img src="{{asset('front/assets/img/logo/logo.jpg')}}" alt="" height="65px">
             </div>
         </div>
     </div>
 </div>
---}}
 <!-- Preloader Start -->
 
 <header>
@@ -77,12 +75,23 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li class="active"><a href="{{route('home')}}">{{__('Accueil')}}</a></li>
-                                    <li><a href="#" data-toggle="modal"
-                                           data-target="#massRequestModal">{{__('Demande de messe')}}</a></li>
-                                    <li><a href="#mobile-app">{{__('S\'inscrire')}}</a></li>
-                                    <li><a href="#contactSection">{{{__('Contact')}}}</a></li>
-                                    <li><a class="payment" href="#donation">{{{__('Faire un don')}}}</a></li>
+                                    <li class="active">
+                                        <a href="{{route('home')}}">{{__('Accueil')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#massRequestModal">
+                                            {{__('Demande de messe')}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#mobile-app">{{__('S\'inscrire')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="#contactSection">{{{__('Contact')}}}</a>
+                                    </li>
+                                    <li>
+                                        <a class="donation" href="#donation">{{{__('Faire un don')}}}</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -108,10 +117,10 @@
                     <div class="row d-flex align-items-center">
                         <div class="col-lg-6 col-md-9 ">
                             <div class="hero__caption">
-                                <span data-animation="fadeInUp" data-delay=".4s">App Landing Page</span>
-                                <h1 data-animation="fadeInUp" data-delay=".6s">Get things done<br>with Appco</h1>
-                                <p data-animation="fadeInUp" data-delay=".8s">Dorem ipsum dolor sitamet, consectetur
-                                    adipiscing elit, sed do eiusm tempor incididunt ulabore et dolore magna aliqua.</p>
+                                <h1 data-animation="fadeInUp" data-delay=".6s">D2Messe</h1>
+                                <p data-animation="fadeInUp" data-delay=".8s">
+                                    {{__('Avec D2Messe ne vous deplacer plus pour éffectuer vos demandes de messes')}}
+                                </p>
                                 <!-- Slider btn -->
                                 <div class="slider-btns">
                                     <!-- Hero-btn -->
@@ -120,9 +129,9 @@
                                     <!-- Video Btn -->
                                     <a data-animation="fadeInRight" data-delay="1.0s"
                                        class="popup-video video-btn ani-btn"
-                                       href="https://www.youtube.com/watch?v=1aP-TXUpNoU"
+                                       href="#" data-toggle="modal" data-target="#massRequestModal"
                                        data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                                        <i class="fas fa-play"></i></a>
+                                        <i class="fa fa-paper-plane"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -169,75 +178,6 @@
         </div>
     </div>
     <!-- Slider Area End -->
-    <!-- Best Features Start -->
-    <section class="best-features-area section-padd4">
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-xl-8 col-lg-10">
-                    <!-- Section Tittle -->
-                    <div class="row">
-                        <div class="col-lg-10 col-md-10">
-                            <div class="section-tittle">
-                                <h2>Some of the best features Of Our App!</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Section caption -->
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <div class="single-features mb-70">
-                                <div class="features-icon">
-                                    <span class="flaticon-support"></span>
-                                </div>
-                                <div class="features-caption">
-                                    <h3>Easy to Costomize</h3>
-                                    <p>Aorem psum olorsit amet ectetur adipiscing elit, sed dov.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <div class="single-features mb-70">
-                                <div class="features-icon">
-                                    <span class="flaticon-support"></span>
-                                </div>
-                                <div class="features-caption">
-                                    <h3>Extreme Security</h3>
-                                    <p>Aorem psum olorsit amet ectetur adipiscing elit, sed dov.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <div class="single-features mb-70">
-                                <div class="features-icon">
-                                    <span class="flaticon-support"></span>
-                                </div>
-                                <div class="features-caption">
-                                    <h3>Customer Support</h3>
-                                    <p>Aorem psum olorsit amet ectetur adipiscing elit, sed dov.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <div class="single-features mb-70">
-                                <div class="features-icon">
-                                    <span class="flaticon-support"></span>
-                                </div>
-                                <div class="features-caption">
-                                    <h3>Creative Design</h3>
-                                    <p>Aorem psum olorsit amet ectetur adipiscing elit, sed dov.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Shpe -->
-        <div class="features-shpae d-none d-lg-block">
-            <img src="{{asset('front/assets/img/shape/best-features.png')}}" alt="">
-        </div>
-    </section>
-    <!-- Best Features End -->
     <!-- Services Area Start -->
     <section class="service-area sky-blue section-padding2">
         <div class="container">
@@ -245,7 +185,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6">
                     <div class="section-tittle text-center">
-                        <h2>How Can We HelpYour<br>with Appco!</h2>
+                        <h2>{{__("Ce que D2messe vous apporte")}}</h2>
                     </div>
                 </div>
             </div>
@@ -257,7 +197,7 @@
                             <span class="flaticon-businessman"></span>
                         </div>
                         <div class="service-cap">
-                            <h4><a href="#">Easily Manage</a></h4>
+                            <h4><a href="#">{{__("Une application simple à utiliser")}}</a></h4>
                             <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
                                 laborea.</p>
                         </div>
@@ -269,7 +209,7 @@
                             <span class="flaticon-pay"></span>
                         </div>
                         <div class="service-cap">
-                            <h4><a href="#">Get Payments Easily</a></h4>
+                            <h4><a href="#">{{__("Un paiement simplifier via votre mobile money")}}</a></h4>
                             <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
                                 laborea.</p>
                         </div>
@@ -281,7 +221,7 @@
                             <span class="flaticon-plane"></span>
                         </div>
                         <div class="service-cap">
-                            <h4><a href="#">Quick Messaging</a></h4>
+                            <h4><a href="#">{{__('Enovoyer vos demandes de messe Rapidement')}}</a></h4>
                             <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut
                                 laborea.</p>
                         </div>
@@ -298,7 +238,7 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="app-caption">
                         <div class="section-tittle section-tittle3">
-                            <h2>Our App Available For Any Device Download now</h2>
+                            <h2>{{__("Application disponible gratuitement dans les stores")}}</h2>
                             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore fug.</p>
                             <div class="app-btn">
                                 <a href="#" class="app-btn1"><img src="{{asset('front/assets/img/shape/app_btn1.png')}}"
@@ -327,31 +267,9 @@
     </div>
     <!-- Available App End-->
     <!-- Say Something Start -->
-    <div class="say-something-aera pt-90 pb-90 fix">
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="offset-xl-1 offset-lg-1 col-xl-5 col-lg-5">
-                    <div class="say-something-cap">
-                        <h2>Say Hello To The Collaboration Hub.</h2>
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-3">
-                    <div class="say-btn">
-                        <a href="#" class="btn radius-btn">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- shape -->
-        <div class="say-shape">
-            <img src="{{asset('front/assets/img/shape/say-shape-left.png')}}" alt=""
-                 class="say-shape1 rotateme d-none d-xl-block">
-            <img src="{{asset('front/assets/img/shape/say-shape-right.png')}}" alt=""
-                 class="say-shape2 d-none d-lg-block">
-        </div>
-    </div>
     <!-- Say Something End -->
-    <section id="contactSection" class="contact-section mt-5">
+    <span id="contactSection"></span>
+    <section id="" class="contact-section mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12 say-something-cap text-center">
@@ -402,15 +320,15 @@
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-home"></i></span>
                         <div class="media-body">
-                            <h3>Buttonwood, California.</h3>
-                            <p>Rosemead, CA 91770</p>
+                            <h3>Abidjan, Côte d'Ivooire.</h3>
+                            <p>Cocody, Angre</p>
                         </div>
                     </div>
                     <div class="media contact-info">
                         <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                         <div class="media-body">
                             <h3>+225 07 00 00 00</h3>
-                            <p>{{__('Lundi au Vendredi de 8h à 20h')}}</p>
+                            <p>{{__('Lundi - Vendredi, 8h - 20h')}}</p>
                         </div>
                     </div>
                     <div class="media contact-info">
@@ -438,7 +356,7 @@
                             <!-- logo -->
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="{{asset('front/assets/img/logo/logo2_footer.png')}}" alt="">
+                                    <img src="{{asset('front/assets/img/logo/logo.jpg')}}" alt="" height="65px">
                                 </a>
                             </div>
                             <div class="footer-tittle">
@@ -451,30 +369,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Quick Links</h4>
-                                <ul>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Features</a></li>
-                                    <li><a href="#">Pricing</a></li>
-                                    <li><a href="#">Download</a></li>
-                                    <li><a href="#">Reviews</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-lg-2 col-md-4 col-sm-7">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Support</h4>
+                                <h4>{{__('Support')}}</h4>
                                 <ul>
-                                    <li><a href="#">Report a bug</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Sitemap</a></li>
-                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#contactSection">{{__('Signaler un bug')}}</a></li>
+                                    <li><a href="#">{{__('Politique de confidentialite')}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -482,20 +383,21 @@
                     <div class="col-lg-3 col-md-6 col-sm-8">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Newsletter</h4>
+                                <h4>{{__('Newsletter')}}</h4>
                                 <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear </p>
+                                    <p>{{__('Inscrivez vous à notre newsletter pour ne rien manquer')}} </p>
                                 </div>
                                 <!-- Form -->
                                 <div class="footer-form">
                                     <div id="mc_embed_signup">
                                         <form target="_blank"
-                                              action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                              action=""
                                               method="get" class="subscribe_form relative mail_part" novalidate="true">
                                             <input type="email" name="EMAIL" id="newsletter-form-email"
-                                                   placeholder=" Email Address " class="placeholder hide-on-focus"
+                                                   placeholder="{{__('Addresse Email')}}"
+                                                   class="placeholder hide-on-focus"
                                                    onfocus="this.placeholder = ''"
-                                                   onblur="this.placeholder = ' Email Address '">
+                                                   onblur="this.placeholder = '{{__('Addresse Email')}}'">
                                             <div class="form-icon">
                                                 <button type="submit" name="submit" id="newsletter-submit"
                                                         class="email_icon newsletter-submit button-contactForm bg-purple">
@@ -512,7 +414,7 @@
                     </div>
                 </div>
                 <!-- Copy-Right -->
-                <div class="row align-items-center d-none">
+                {{--<div class="row align-items-center d-none">
                     <div class="col-xl-12 ">
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -524,7 +426,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>
@@ -554,7 +456,7 @@
                             <div class="modal-body">
                                 <fieldset class="form-group">
                                     <div>
-                                        <label for="select2-2">{{__('Paroisse')}}</label>
+                                        <label for="select2-2">{{__('Paroisse')}} <span style="color: red">*</span></label>
                                     </div>
                                     <select name="parish_id" id="select2-2" class="select2-single form-control">
                                         <option value="">---Choisir la Paroisse---</option>
@@ -605,10 +507,12 @@
                                     <label for="template-select-input">{{__('Template')}}
                                     </label>
                                     <div class="input-group">
-                                        <select name="request_template_id" id="template-select-input" class="form-control">
+                                        <select name="request_template_id" id="template-select-input"
+                                                class="form-control">
                                             <option value="">---{{ __('Template de demande') }}---</option>
                                             @foreach($requestTemplates as $requestTemplate)
-                                                <option value="{{ $requestTemplate->id }}">{{ $requestTemplate->name }}</option>
+                                                <option
+                                                    value="{{ $requestTemplate->id }}">{{ $requestTemplate->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -616,15 +520,16 @@
                                 <div class="form-group">
                                     <label for="message-textarea">{{__('Message')}}</label>
                                     <div class="input-group">
-                                        <textarea name="message" id="message-textarea" cols="30" rows="5" class="form-control"
+                                        <textarea name="message" id="message-textarea" cols="30" rows="5"
+                                                  class="form-control"
                                                   placeholder="{{ __('Ecrire la demande (texte limité à 120 charactere)') }}"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right m-0 p-3">
                                     <button type="submit"
-                                            class="btn btn-primary text-light font-weight-bold rounded">{{__('Enregistrer')}}
+                                            class="payment btn btn-primary text-light font-weight-bold rounded">{{__('Enregistrer')}}
                                     </button>
-                                    <button type="reset"
+                                    <button type="reset" data-dismiss="modal" aria-label="Close"
                                             class="btn btn-danger font-weight-bold text-light rounded">{{__('Annuler')}}
                                     </button>
                                 </div>

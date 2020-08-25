@@ -20,6 +20,8 @@ Route::get('/', function () {
     return response()->json($password);
 });
 
+Route::post('don', 'PageController@donation')->name('donation');
+
 Route::get('parishes/{id}/masses', 'MassRequestController@getMasses')->name('getMassesByParish');
 Route::get('request-templates/{id}', 'RequestTemplateController@getRequestTemplates')->name('getTemplatesById');
 

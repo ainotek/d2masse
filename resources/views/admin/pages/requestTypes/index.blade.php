@@ -20,43 +20,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($requestsType as $requestType)
-                                <tr>
-                                    <td>{{ $requestType->name }}</td>
-                                    <td>{{ $requestType->description }}</td>
-                                    <td>
-                                        <a href="{{ route('request-types.edit', ['request_type' => $requestType->id]) }}" class="btn btn-warning">
-                                            <i class="fa fa-edit "></i>
-                                        </a>
-                                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#smallModal-{{ $requestType->id }}">
-                                            <i class="fa fa-trash-o "></i>
-                                        </button>
-                                        <div class="modal fade" id="smallModal-{{ $requestType->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-sm modal-danger" role="document">
-                                                <form action="{{ route('request-types.delete', ['request_type' => $requestType->id]) }}" method="post">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Supprimer {{ $requestType->name }}</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <strong>Cette action est irréversible, ête-vous sûr ?</strong>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Annuler</button>
-                                                                @csrf
-                                                                @method('delete')
-                                                            <button class="btn btn-danger">Oui, supprimer</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($requestsType as $requestType)
+                            <tr>
+                                <td>{{ $requestType->name }}</td>
+                                <td>{{ $requestType->description }}</td>
+                                <td>
+                                    <a href="{{ route('request-types.edit', ['request_type' => $requestType->id]) }}"
+                                       class="btn btn-warning">
+                                        <i class="fa fa-edit "></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#smallModal-{{ $requestType->id }}">
+                                        <i class="fa fa-trash-o "></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -65,7 +44,8 @@
 
     </div>
     <!-- /.conainer-fluid -->
-    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog modal-info" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -81,13 +61,15 @@
                         <div class="form-group">
                             <label for="name">{{__('Nom')}}</label>
                             <div class="input-group">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="{{__('Nom')}}">
+                                <input type="text" id="name" name="name" class="form-control"
+                                       placeholder="{{__('Nom')}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="description">{{__('Description')}}</label>
                             <div class="input-group">
-                                <input type="text" id="description" name="description" class="form-control" placeholder="{{__('Entrer une petite description')}}">
+                                <input type="text" id="description" name="description" class="form-control"
+                                       placeholder="{{__('Entrer une petite description')}}">
                             </div>
                         </div>
                     </div>
@@ -101,5 +83,31 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    @foreach($requestsType as $requestType)
+        <div class="modal fade" id="smallModal-{{ $requestType->id }}" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-danger" role="document">
+                <form action="{{ route('request-types.delete', ['request_type' => $requestType->id]) }}" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Supprimer {{ $requestType->name }}</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <strong>Cette action est irréversible, ête-vous sûr ?</strong>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Annuler</button>
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger">Oui, supprimer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    @endforeach
 @stop
 

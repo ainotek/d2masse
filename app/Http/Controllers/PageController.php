@@ -8,6 +8,7 @@ use App\Models\Parishioner;
 use App\Models\Request_template;
 use App\Models\Request_type;
 use Illuminate\Http\Request;
+use \App\Helpers\Helpers;
 
 class PageController extends Controller
 {
@@ -25,11 +26,13 @@ class PageController extends Controller
     {
         try{
             $data = $request->all();
+            $date = date('Ymd.His');
+            $rand = Helpers::generateRandomString(6);
             $transaction = [
-                "trans_id" => 'D'.date('Ymd.His'),
+                "trans_id" => "D{$date}.{$rand}",
                 "amount" => $data['amount']
             ];
-            return response()->json($data, 200);
+            return response()->json($transaction, 200);
         }catch (\Exception $e){
             return response()->json('error', 200);
         }
